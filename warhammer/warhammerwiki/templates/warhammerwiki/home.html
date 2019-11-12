@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>HOME</h1>
+    <ul>
+        {% for race in races %}
+            <li>
+                <h2><a href="{% url 'race-detail' race.slug %}">{{ race.race_name }}</a></h2>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

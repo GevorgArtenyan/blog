@@ -1,4 +1,11 @@
 from django.contrib import admin
-from .models import Unit
+from .models import Unit, Race
 
-admin.site.register(Unit)
+class RaceAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('race_name',)}
+
+class UnitAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('unit_name',)}
+
+admin.site.register(Race, RaceAdmin)
+admin.site.register(Unit, UnitAdmin)
