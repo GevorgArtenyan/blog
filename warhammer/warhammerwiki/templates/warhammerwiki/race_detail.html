@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
+{% extends "warhammerwiki/base.html" %}
+{% block content %}
         {{ object.race_name }}
         {% for unit in units %}
-            <h1><a href="{% url 'unit-detail' races.slug unit.slug %}">{{ unit.unit_name }}</a></h1>
+            <h1><a href="{% url 'unit-detail' race.slug unit.slug %}">{{ unit.unit_name }}</a></h1>
         {% endfor %}
-
-</body>
-</html>
+{% endblock %}

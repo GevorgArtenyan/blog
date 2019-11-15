@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h3>{{ object.unit_name }}</h3>
-    <h3>Cost: {{ object.cost }}</h3>
-    <h3>Upkeep: {{ object.upkeep }}</h3>
-    <h3>Health: {{ object.health }}</h3>
-    <h3>Armour: {{ object.armour }}</h3>
-    <h3>Leadership: {{ object.leadership }}</h3>
-    <h3>Speed: {{ object.speed }}</h3>
-    <h3>Melee Attack: {{ object.melee_attack }}</h3>
-    <h3>Melee Defence: {{ object.melee_defence }}</h3>
-    <h3>Weapon Strength: {{ object.weapon_strenght }}</h3>
-    <h3>Charge Bonus: {{ object.charge_bonus }}</h3>
-    <h3>Ammunition: {{ object.ammunition }}</h3>
-    <h3>Range: {{ object.range }}</h3>
-    <h3>Missile Damage: {{ object.missile_damage }}</h3>
-</body>
-</html>
+{% extends "warhammerwiki/base.html" %}
+{% block content %}
+
+    <article class="media content-section">
+        <img src="{{ object.unit_image.url }}">
+    </article>
+        <h2>{{ object.unit_name }}</h2>
+        <h3>Cost: {{ object.cost }}</h3>
+        <h3>Upkeep: {{ object.upkeep }}</h3>
+        <h3>Health: {{ object.health }}</h3>
+        <h3>Armour: {{ object.armour }}</h3>
+        <h3>Leadership: {{ object.leadership }}</h3>
+        <h3>Speed: {{ object.speed }}</h3>
+        <h3>Melee Attack: {{ object.melee_attack }}</h3>
+        <h3>Melee Defence: {{ object.melee_defence }}</h3>
+        <h3>Weapon Strength: {{ object.weapon_strenght }}</h3>
+        <h3>Charge Bonus: {{ object.charge_bonus }}</h3>
+        <h3>Ammunition: {{ object.ammunition }}</h3>
+        <h3>Range: {{ object.range }}</h3>
+        <h3>Missile Damage: {{ object.missile_damage }}</h3>
+{% endblock %}

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
-        {% for race in races %}
-            <li>
-                <h2><a href="{% url 'race-detail' race.slug %}">{{ race.race_name }}</a></h2>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "warhammerwiki/base.html" %}
+{% load static %}
+{% block content %}
+    {% for race in races %}
+        <div style="float: left;
+                    margin-right: 500px;" class="container">
+            <a href="{% url 'race-detail' race.slug %}" style="text-decoration:none">
+                <article class="media content-section">
+                    <img src="{{ race.race_image.url }}" style="float: left;
+                    margin-right: 10px; margin-botton: 5px"
+                    />
+                </article>
+                <h3 style="font-family:verdana;color:black">{{ race.race_name }}</h3>
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

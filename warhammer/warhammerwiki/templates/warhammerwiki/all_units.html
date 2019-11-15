@@ -1,0 +1,12 @@
+{% extends "warhammerwiki/base.html" %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+    <form method="GET">
+        {{ filter.form|bootstrap }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    {% for unit in filter.qs %}
+        <h1><a href="{% url 'separate-unit-detail' unit.slug %}">{{ unit.unit_name }}</a></h1>
+    {% endfor %}
+{% endblock %}

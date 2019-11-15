@@ -1,7 +1,9 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from PIL import Image
 
 class Race(models.Model):
+    race_image = models.ImageField(upload_to='profile_pics')
     race_name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
 
@@ -9,12 +11,25 @@ class Race(models.Model):
         self.slug = slugify(self.race_name)
         super(Race, self).save(*args, **kwargs)
 
+        img = Image.open(self.race_image.path)
+
+        if img.height > 100 or img.width > 100:
+            output_size = (100, 100)
+            img.thumbnail(output_size)
+            img.save(self.race_image.path)
+
     def __str__(self):
         return self.race_name
+
+
+
+
+
 
 class Unit(models.Model):
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
     unit_name = models.CharField(max_length=200)
+    unit_image = models.ImageField(upload_to='profile_pics')
     cost = models.IntegerField()
     upkeep = models.IntegerField()
     health = models.IntegerField()
