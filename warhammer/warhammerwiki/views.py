@@ -53,3 +53,8 @@ class AllUnitList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = UnitFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
+
+class UnitCreateView(CreateView):
+    model = Unit
+    template_name = 'warhammerwiki/unit_create.html'
