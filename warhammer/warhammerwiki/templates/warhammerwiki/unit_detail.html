@@ -1,4 +1,5 @@
 {% extends "warhammerwiki/base.html" %}
+{% load static from staticfiles %}
 {% block content %}
 
 
@@ -18,24 +19,24 @@
                     <ul class="nav__list">
                       <li>
                         <input id="SP Cost" type="checkbox" hidden />
-                        <label for="SP Cost">SP Cost: {{ object.cost }}</label>
+                        <label for="SP Cost"><img src="{% static 'warhammerwiki/images/icon_income.png' %}">     SP Cost: {{ object.cost }}</label>
                         <ul class="group-list">
-                            <li><a href="#">SP Upkeep: {{ object.upkeep }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}">      SP Upkeep: {{ object.upkeep }}</a></li>
                         </ul>
                       </li>
                     </ul>
                 </div>
                 <div>
                     <ul class="nav__list">
-                        <label>MP Cost: {{ object.mp_cost }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_treasury.png' %}">      MP Cost: {{ object.mp_cost }} </label>
                     </ul>
                 </div>
                     <ul class="nav__list">
                       <li>
                         <input id="Health" type="checkbox" hidden />
-                        <label for="Health">Health: {{ object.health }}</label>
+                        <label for="Health"><img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}">      Health: {{ object.health }}</label>
                         <ul class="group-list">
-                            <li><a href="#">Health per Entity: {{ object.health_per_entity }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}">      Health per Entity: {{ object.health_per_entity }}</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -43,14 +44,14 @@
                     <ul class="nav__list">
                       <li>
                         <input id="Armour" type="checkbox" hidden />
-                        <label for="Armour">Armour: {{ object.armour }}</label>
+                        <label for="Armour"><img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}">      Armour: {{ object.armour }}</label>
                         <ul class="group-list">
-                            <li><a href="#">Parry Chance: {{ object.parry_chance }}</a></li>
-                            <li><a href="#">Ward Save: {{ object.ward_save }}</a></li>
-                            <li><a href="#">Physical Resistance: {{ object.physical_resistance }}</a></li>
-                            <li><a href="#">Missile Resistance: {{ object.missile_resistance }}</a></li>
-                            <li><a href="#">Magic Resistance: {{ object.magic_resistance }}</a></li>
-                            <li><a href="#">Fire Resistance: {{ object.fire_resistance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}">      Parry Chance: {{ object.parry_chance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}">      Ward Save: {{ object.ward_save }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}">      Physical Resistance: {{ object.physical_resistance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}">      Missile Resistance: {{ object.missile_resistance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}">      Magic Resistance: {{ object.magic_resistance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}">      Fire Resistance: {{ object.fire_resistance }}</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -58,13 +59,13 @@
 
                 <div>
                     <ul class="nav__list">
-                        <label>Leadership: {{ object.leadership }}</label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}">      Leadership: {{ object.leadership }}</label>
                     </ul>
                 </div>
 
                 <div>
                     <ul class="nav__list">
-                        <label>Speed: {{ object.speed }}</label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}">      Speed: {{ object.speed }}</label>
                     </ul>
 
                 </div>
@@ -73,9 +74,9 @@
                     <ul class="nav__list">
                       <li>
                         <input id="Melee Attack" type="checkbox" hidden />
-                        <label for="Melee Attack">Melee Attack: {{ object.melee_attack }}</label>
+                        <label for="Melee Attack"><img src="{% static 'warhammerwiki/images/icon_stat_attack.png' %}">      Melee Attack: {{ object.melee_attack }}</label>
                         <ul class="group-list">
-                            <li><a href="#">Attack Interval: {{ object.attack_interval }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}">      Attack Interval: {{ object.attack_interval }}</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -83,7 +84,7 @@
 
                 <div>
                     <ul class="nav__list">
-                        <label>Melee Defence: {{ object.melee_defence }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}">      Melee Defence: {{ object.melee_defence }} </label>
                     </ul>
                 </div>
 
@@ -91,12 +92,12 @@
                     <ul class="nav__list">
                       <li>
                         <input id="Weapon Strength" type="checkbox" hidden />
-                        <label for="Weapon Strength">Weapon Strength: {{ object.weapon_strenght }}</label>
+                        <label for="Weapon Strength"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}">      Weapon Strength: {{ object.weapon_strenght }}</label>
                         <ul class="group-list">
-                            <li><a href="#">Base Damage: {{ object.base_damage }}</a></li>
-                            <li><a href="#">AP Damage: {{ object.ap_damage }}</a></li>
-                            <li><a href="#">Bonus vs. Large: {{ object.bonus_vs_large }}</a></li>
-                            <li><a href="#">Bonus vs. Infantry: {{ object.bonus_vs_infantry }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}">      Base Damage: {{ object.base_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}">      AP Damage: {{ object.ap_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}">      Bonus vs. Large: {{ object.bonus_vs_large }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}">      Bonus vs. Infantry: {{ object.bonus_vs_infantry }}</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -104,20 +105,20 @@
 
                 <div>
                     <ul class="nav__list">
-                        <label>Charge Bonus: {{ object.charge_bonus }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}">      Charge Bonus: {{ object.charge_bonus }} </label>
                     </ul>
                 </div>
             {% if unit.ammunition is 0 %}
             {% else %}
                 <div>
                     <ul class="nav__list">
-                        <label>Ammunition: {{ object.ammunition }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_ammo.png' %}">      Ammunition: {{ object.ammunition }} </label>
                     </ul>
                 </div>
 
                 <div>
                     <ul class="nav__list">
-                        <label>Range: {{ object.range }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}">      Range: {{ object.range }} </label>
                     </ul>
                 </div>
 
@@ -125,21 +126,20 @@
                     <ul class="nav__list">
                       <li>
                         <input id="Missile Damage" type="checkbox" hidden />
-                        <label for="Missile Damage">Missile Damage: {{ object.missile_damage }}</label>
+                        <label for="Missile Damage"><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}">      Missile Damage: {{ object.missile_damage }}</label>
                         <ul class="group-list">
-                            <li><a href="#">Missile Base Damage: {{ object.missile_base_damage }}</a></li>
-                            <li><a href="#">Missile AP Damage: {{ object.missile_ap_damage }}</a></li>
-                            <li><a href="#">Bonus vs. Infantry: {{ object.missile_bonus_vs_infantry }}</a></li>
-                            <li><a href="#">Bonus vs. Large: {{ object.missile_bonus_vs_large }}</a></li>
-                            <li><a href="#">Explosion Base Dmg: {{ object.explosion_base_damage }}</a></li>
-                            <li><a href="#">Explosion AP Dmg: {{ object.explosion_ap_damage }}</a></li>
-                            <li><a href="#">Shots Per Volley: {{ object.shot_per_volley }}</a></li>
-                            <li><a href="#">Projectile Number: {{ object.projectile_number }}</a></li>
-                            <li><a href="#">Reload Time: {{ object.reload_time }}</a></li>
-                            <li><a href="#">Total Accuracy: {{ object.total_accuracy }}</a></li>
-                            <li><a href="#">Calibration Distance: {{ object.calibration_distance }}</a></li>
-                            <li><a href="#">Calibration Area: {{ object.calibration_area }}</a></li>
-                            <li><a href="#">Fire Resistance: {{ object.fire_resistance }}</a></li>
+                            <li><a href=""><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}">       Missile Base Damage: {{ object.missile_base_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}">      Missile AP Damage: {{ object.missile_ap_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}">      Bonus vs. Infantry: {{ object.missile_bonus_vs_infantry }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}">      Bonus vs. Large: {{ object.missile_bonus_vs_large }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}">      Explosion Base Dmg: {{ object.explosion_base_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}">      Explosion AP Dmg: {{ object.explosion_ap_damage }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}">      Shots Per Volley: {{ object.shot_per_volley }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}">      Projectile Number: {{ object.projectile_number }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}">      Reload Time: {{ object.reload_time }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}">      Total Accuracy: {{ object.total_accuracy }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}">      Calibration Distance: {{ object.calibration_distance }}</a></li>
+                            <li><a href="#"><img src="{% static 'warhammerwiki/images/help_page_drag.png' %}">      Calibration Area: {{ object.calibration_area }}</a></li>
                         </ul>
                       </li>
                     </ul>
@@ -147,7 +147,7 @@
             {% endif %}
                 <div>
                     <ul class="nav__list">
-                        <label>Fatigue Modifier: {{ object.fatigue_modifier }} </label>
+                        <label><img src="{% static 'warhammerwiki/images/icon_status_fatigue_24px.png' %}">      Fatigue Modifier: {{ object.fatigue_modifier }} </label>
                     </ul>
                 </div>
       </div>
