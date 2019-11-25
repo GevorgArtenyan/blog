@@ -4,6 +4,12 @@ from .models import Race, Unit
 from django.http import Http404
 from django.db.models import Q
 from .filters import UnitFilter
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
+def about(request):
+    return render(request, 'warhammerwiki/about.html')
 
 class RaceListView(ListView):
     model = Race
@@ -53,8 +59,3 @@ class AllUnitList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = UnitFilter(self.request.GET, queryset=self.get_queryset())
         return context
-
-
-class UnitCreateView(CreateView):
-    model = Unit
-    template_name = 'warhammerwiki/unit_create.html'
