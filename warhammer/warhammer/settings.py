@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'warhammerwiki.apps.WarhammerwikiConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,17 +1,204 @@
 {% extends "warhammerwiki/base.html" %}
 {% load static %}
 {% block content %}
-    {% for race in races %}
-        <div style="float: left;
-                    margin-right: 500px;" class="container">
-            <a href="{% url 'race-detail' race.slug %}" style="text-decoration:none">
-                <article class="media content-section">
-                    <img src="{{ race.race_image.url }}" style="float: left;
-                    margin-right: 10px; margin-botton: 5px"
-                    />
-                </article>
-                <h3 style="font-family:verdana;color:black">{{ race.race_name }}</h3>
-            </a>
+
+
+<div class="container mb-5">
+      <div class="row">
+        <div class="col-xs-5 col1">
+                <a href="#">
+                <a href="{% url 'race-detail' he.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ he.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ he.race_name }}</h3>
+                </a>
+                </a>
         </div>
-    {% endfor %}
+        <div class="col-xs-2 ml-5 col2">
+                <a href="#">
+                <a href="{% url 'race-detail' de.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ de.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ de.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col3">
+                <a href="#">
+                <a href="{% url 'race-detail' we.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ we.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ we.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col4">
+                <a href="#">
+                <a href="{% url 'race-detail' empire.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ empire.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ empire.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col5">
+                <a href="#">
+                <a href="{% url 'race-detail' dwarfs.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ dwarfs.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ dwarfs.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+      </div>
+</div>
+<div class="container mb-5">
+      <div class="row">
+        <div class="col-xs-5 col1">
+                <a href="#">
+                <a href="{% url 'race-detail' skaven.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ skaven.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ skaven.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col2">
+                <a href="#">
+                <a href="{% url 'race-detail' greenskins.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ greenskins.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ greenskins.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col3">
+                <a href="#">
+                <a href="{% url 'race-detail' lizardmen.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ lizardmen.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ lizardmen.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col4">
+                <a href="#">
+                <a href="{% url 'race-detail' beastmen.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ beastmen.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ beastmen.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col5">
+                <a href="#">
+                <a href="{% url 'race-detail' norsca.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ norsca.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ norsca.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+      </div>
+</div>
+<div class="container mb-5">
+      <div class="row">
+        <div class="col-xs-5 col1">
+                <a href="#">
+                <a href="{% url 'race-detail' undead.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ undead.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ undead.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col2">
+                <a href="#">
+                <a href="{% url 'race-detail' vcoast.slug %}" style="text-decoration:none" class="mx-auto">
+                    <article class="media content-section">
+                        <img src="{{ vcoast.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+
+                </a>
+                </a>
+            <h3 class="container text-center" style="font-family:verdana;color:black">Vampire <br/>Coast</h3>
+        </div>
+        <div class="col-xs-2 ml-5 col3">
+                <a href="#">
+                <a href="{% url 'race-detail' tk.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ tk.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 style="font-family:verdana;color:black">{{ tk.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col4">
+                <a href="#">
+                <a href="{% url 'race-detail' bretonnia.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ bretonnia.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ bretonnia.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+        <div class="col-xs-2 ml-5 col5">
+                <a href="#">
+                <a href="{% url 'race-detail' chaos.slug %}" style="text-decoration:none">
+                    <article class="media content-section">
+                        <img src="{{ chaos.race_image.url }}" style="float: left;
+                        margin-right: 10px; margin-botton: 5px"
+                        />
+                    </article>
+                    <h3 class="container text-center" style="font-family:verdana;color:black">{{ chaos.race_name }}</h3>
+                </a>
+                </a>
+        </div>
+      </div>
+</div>
+
+
+
+
+
 {% endblock %}

@@ -1,6 +1,5 @@
 from django import forms
-from .models import Unit
-
+from .models import Unit, Race
 
 class PageForm(forms.ModelForm):
     unit_name = forms.CharField(max_length=200)
@@ -24,3 +23,4 @@ class PageForm(forms.ModelForm):
                    'armour', 'leadership', 'speed', 'melee_attack',
                    'melee_defence', 'charge_bonus', 'charge_bonus', 'ammunition',
                    'range', 'missile_damage')
+

@@ -1,98 +1,34 @@
-{% load static from staticfiles %}
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
-
-    <div class="d-flex justify-content-between container bg-primary m-1">
-      <div>
-         left
-      </div>
-      <div>
-         right
-      </div>
-     </div>
-
-    <div class="bg-primary ml-1">Hiii</div>
-    <div class="bg-primary mr-5">Hiii</div>
-
-    <div class="bg-primary mt-1">Hiii</div>
-    <div class="bg-primary mt-5">Hiii</div>
-
-    <div class="bg-primary mb-1">Hiii</div>
-    <div class="bg-primary mb-5">Hiii</div>
-
-    <div class="bg-primary m-auto" style="width: 200px;">Armour: 100</div>
-
-    <div class="bg-primary ml-5 ml-sm-0 ml-md-5 ml-lg-0 ml-xl-5">Armour: 100</div>
-
-    <div class="bg-dark p-1" style="width: 200px;"><h5 style="color:white;">Armour: 100</h5></div>
+{% extends "warhammerwiki/base.html" %}
+{% load static %}
+{% block content %}
 
 
+<div>
+    <label>Races: </label>
+    <select id="race">
+            <option>---- select ----</option>
+            {% for race in allraces %}
+                <option id="{{ race.slug }}x">{{ race.race_name }}</option>
+            {% endfor %}
+     </select>
+</div>
 
-
-
-
-
-    <a href="#armour" class="btn btn-dark" data-toggle="collapse" hidden>
-        <div class="card-header bg-dark text-white d-flex" style="width: 300px;"><img src="{% static 'warhammerwiki/images/collapse.png' %}" width="20">
-            <a href="#" class="text-white"><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour</a>
-            <a href="#" class="text-white ml-auto">120</a>
+    {% for race in allraces %}
+    <div id="all_choices">
+        <div class='unit_choice' id="{{ race.slug }}">
+            <label>Units: </label>
+            <select class="unit">
+                        <option value="def" id="default">---- select ----</option>
+                    {% for unit in race.unit_set.all %}
+                        <option>{{ unit.unit_name }}</option>
+                    {% endfor %}
+            </select>
         </div>
-    </a>
-    <div class="collapse" id="armour">
-          <div class="bg-dark p-1 d-flex justify-content-between" style="width: 200px;">
-             <p class="text-left text-white">Armour</p><p class="text-white text-light">120</p>
-          </div>
-          <div class="bg-dark p-1 d-flex justify-content-between" style="width: 200px;">
-           <p class="text-left text-white">Armour</p><p class="text-white text-light">120</p>
-          </div>
     </div>
-        <a href="#aaa" class="btn btn-dark p-0" data-toggle="collapse" hidden>
-        <div class="card-header bg-dark text-white d-flex" style="width: 300px;"><img src="{% static 'warhammerwiki/images/collapse.png' %}" width="20">
-            <a href="#" class="text-white"><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour</a>
-            <a href="#" class="text-white ml-auto">120</a>
-        </div>
-    </a>
-    <div class="collapse" id="aaa">
-          <div class="bg-dark p-1 d-flex justify-content-between" style="width: 200px;">
-             <p class="text-left text-white">Armour</p><p class="text-white text-light">120</p>
-          </div>
-          <div class="bg-dark p-1 d-flex justify-content-between" style="width: 200px;">
-           <p class="text-left text-white">Armour</p><p class="text-white text-light">120</p>
-          </div>
-    </div>
+    {% endfor %}
+
+<div id="trying_things"></div>
 
 
-
-<br>
-<br>
-<br>
-
-
-
-    <div class="bg-dark p-1 d-flex justify-content-between" style="width: 200px;">
-       <p class="text-left text-white">Armour</p><p class="text-white text-light">120</p>
-    </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
-
-
-
-<img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}">
+<script src="{% static 'warhammerwiki/main.js' %}">var a = {{ allraces|safe }};</script>
+{% endblock %}

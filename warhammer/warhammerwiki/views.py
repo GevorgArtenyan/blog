@@ -5,11 +5,26 @@ from django.http import Http404
 from django.db.models import Q
 from .filters import UnitFilter
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 
+
+
+def trying(request):
+    context = {
+        'vzgo': 'vazgen',
+        'hello': 'world',
+    }
+
+    return JsonResponse(context)
 
 
 def about(request):
-    return render(request, 'warhammerwiki/about.html')
+    he_units = Unit.objects.filter(race__race_name = 'High Elves')
+    de_units = Unit.objects.filter(race__race_name='Dark Elves')
+    high = Race.objects.get(id=1).unit_set.all()
+    all_races = Race.objects.all()
+    return render(request, 'warhammerwiki/about.html',
+                  {'allraces': all_races, 'heunits':he_units, 'deunits':de_units, 'high':high})
 
 class RaceListView(ListView):
     model = Race
@@ -20,7 +35,10 @@ class RaceListView(ListView):
 def home(request):
     race_list = Race.objects.all()
     unit_list = Unit.objects.all()
-    context_dict = {}
+
+    context_dict = {'he':Race.objects.get(id=1), 'de':Race.objects.get(id=2), 'we':Race.objects.get(id=3), 'skaven':Race.objects.get(id=4), 'greenskins':Race.objects.get(id=5),
+                    'chaos':Race.objects.get(id=6), 'empire':Race.objects.get(id=7), 'dwarfs':Race.objects.get(id=8), 'undead':Race.objects.get(id=9), 'vcoast':Race.objects.get(id=10),
+                    'tk':Race.objects.get(id=11), 'norsca':Race.objects.get(id=12), 'bretonnia':Race.objects.get(id=13), 'lizardmen':Race.objects.get(id=14), 'beastmen':Race.objects.get(id=15)}
     context_dict['races'] = race_list
     context_dict['units'] = unit_list
 
