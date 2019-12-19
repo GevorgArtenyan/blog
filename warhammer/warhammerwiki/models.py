@@ -70,6 +70,7 @@ class Unit(models.Model):
     ammunition = models.IntegerField()
     missile_fire_attack = models.BooleanField(default=False)
     missile_magic_attack = models.BooleanField(default=False)
+    suppressed = models.BooleanField(default=False)
     range = models.IntegerField()
     missile_damage = models.IntegerField()
     missile_ap_yes_no = models.BooleanField(default=False)
@@ -77,7 +78,6 @@ class Unit(models.Model):
     missile_bonus_inf_yes_no = models.BooleanField(default=False)
     missile_poision_attack = models.BooleanField(default=False)
     missile_sundered_armour = models.BooleanField(default=False)
-    suppressed = models.BooleanField(default=False)
     zzzzap = models.BooleanField(default=False)
     flammable = models.BooleanField(default=False)
     blinded = models.BooleanField(default=False)
@@ -93,10 +93,10 @@ class Unit(models.Model):
     explosion_ap_damage = models.IntegerField()
     shot_per_volley = models.IntegerField()
     projectile_number = models.IntegerField()
-    reload_time = models.IntegerField()
+    reload_time = models.DecimalField(max_digits=5, decimal_places=2)
     total_accuracy = models.IntegerField()
     calibration_distance = models.IntegerField()
-    calibration_area = models.IntegerField()
+    calibration_area = models.DecimalField(max_digits=5, decimal_places=2)
     fatigue_modifier = models.IntegerField()
 
 

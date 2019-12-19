@@ -1,3 +1,11 @@
+{% load static from staticfiles %}
+
+<div id="unit-{{ object.slug }}">
+    <article class="media content-section" id="image-section">
+    </article>
+        <h2 id="unit_name">{{ object.unit_name }}</h2>
+
+
 <header role="banner">
   <nav class="nav" role="navigation">
     <div id="Container">
@@ -10,13 +18,13 @@
                       <li>
                         <input id="SP Cost" type="checkbox" hidden />
                         <label for="SP Cost" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_income.png' %}"> SP Cost: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.cost }}</a>
+                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_income.png' %}"> SP Cost: </a>
+                                <a href="#" style="text-decoration : none" id="unit_cost">{{ object.cost }}</a>
                         </label>
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Upkeep: </a>
-                                <a href="#">{{ object.upkeep }}</a>
+                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Upkeep: </a>
+                                <a href="#" style="text-decoration : none" id="unit_upkeep">{{ object.upkeep }}</a>
                             </label>
                         </ul>
                       </li>
@@ -25,8 +33,8 @@
                 <div>
                     <ul class="nav__list mb-0">
                             <label class="card-header text-white py-0 d-flex justify-content-between">
-                                    <a href="#" class="text-white" data-tooltip title="This is how much you pay to recruit this unit in an online battle."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_treasury.png' %}"> MP Cost: </a>
-                                    <a href="#" class="text-white ml-auto">{{ object.mp_cost }}</a>
+                                    <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in an online battle."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_treasury.png' %}"> MP Cost: </a>
+                                    <a href="#" style="text-decoration : none" id="unit_mp_cost">{{ object.mp_cost }}</a>
                             </label>
                     </ul>
                 </div>
@@ -35,13 +43,13 @@
                         <li>
                         <input id="Health" type="checkbox" hidden />
                         <label for="Health" class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}"> Health: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.health }}</a>
+                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}"> Health: </a>
+                                <a href="#" style="text-decoration : none" id="unit_health">{{ object.health }}</a>
                         </label>
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}"> Health per Entity: </a>
-                                <a href="#">{{ object.health_per_entity }}</a>
+                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}"> Health per Entity: </a>
+                                <a href="#" style="text-decoration : none" id="unit_health_per_entity">{{ object.health_per_entity }}</a>
                             </label>
                         </ul>
                       </li>
@@ -51,41 +59,37 @@
                       <li>
                         <input id="Armour" type="checkbox" hidden />
                         <label for="Armour" class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="How resistant a unit is to missile fire and melee attacks."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour: </a>
-                                <a href="#" class="text-white ml-auto">
-                                   {% if object.bronze_shield %}
-                                        <a href="#" class="text-white ml-auto"><img src="{% static 'warhammerwiki/images/modifier_icon_shield1.png' %}" title="35% chance to block front missile attacks">{{ object.armour }}</a>
-                                    {% elif object.silver_shield %}
-                                        <a href="#" class="text-white ml-auto"><img src="{% static 'warhammerwiki/images/modifier_icon_shield2.png' %}" title="60% chance to block front missile attacks">{{ object.armour }}</a>
-                                    {% else %}
-                                        <a href="#" class="text-white ml-auto">{{ object.armour }}</a>
-                                    {% endif %}
+                                <a href="#" style="text-decoration : none" data-tooltip title="How resistant a unit is to missile fire and melee attacks."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour: </a>
+                                <a href="#" style="text-decoration : none" class="attributes">
+                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield1.png' %}" data-tooltip title="35% chance to block front missile attacks" class="hide_image" id="bronze_shield"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield2.png' %}" data-tooltip title="60% chance to block front missile attacks" class="hide_image" id="silver_shield"></div>
+                                        <div id="unit_armour"></div>
                                 </a>
                         </label>
                         <ul class="group-list mb-0">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}"> Parry Chance: </a>
-                                <a href="#">{{ object.parry_chance }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}"> Parry Chance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_parry_chance">{{ object.parry_chance }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}"> Ward Save: </a>
-                                <a href="#">{{ object.ward_save }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}"> Ward Save: </a>
+                                <a href="#" style="text-decoration : none" id="unit_ward_save">{{ object.ward_save }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}"> Physical Resistance: </a>
-                                <a href="#">{{ object.physical_resistance }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}"> Physical Resistance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_physical_resistance">{{ object.physical_resistance }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}"> Missile Resistance: </a>
-                                <a href="#">{{ object.missile_resistance }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}"> Missile Resistance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_resistance">{{ object.missile_resistance }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}"> Magic Resistance: </a>
-                                <a href="#">{{ object.magic_resistance }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}"> Magic Resistance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_magic_resistance">{{ object.magic_resistance }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}"> Fire Resistance: </a>
-                                <a href="#">{{ object.fire_resistance }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}"> Fire Resistance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_fire_resistance">{{ object.fire_resistance }}</a>
                             </label>
                         </ul>
                       </li>
@@ -95,16 +99,16 @@
                 <div>
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}"> Leadership: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.leadership }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}"> Leadership: </a>
+                                <a href="#" style="text-decoration : none" id="unit_leadership">{{ object.leadership }}</a>
                         </label>
                     </ul>
                 </div>
                 <div>
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}"> Speed: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.speed }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}"> Speed: </a>
+                                <a href="#" style="text-decoration : none" id="unit_speed">{{ object.speed }}</a>
                         </label>
                     </ul>
                 </div>
@@ -114,107 +118,24 @@
                       <li>
                         <input id="Melee Attack" type="checkbox" hidden />
                         <label for="Melee Attack" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_attack.png' %}"> Melee Attack: </a>
-                                <a href="#" class="text-white ml-auto">
-                            {% if object.melee_fire_attack and object.melee_magic_attack %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.melee_poison_attack %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.frostbite %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.sundered_armour %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.melee_poison_attack %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.frostbite %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.sundered_armour %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.frostbite %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.sundered_armour %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite and object.sundered_armour %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite and object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.sundered_armour and object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.sundered_armour and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.sundered_armour and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.sundered_armour and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.weeping_blade and object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.weeping_blade and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.weeping_blade and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.disturbed and object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.disturbed and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.charmed and object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_fire_attack %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_magic_attack %}
-                                <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> {{ object.melee_attack }}
-                            {% elif object.melee_poison_attack %}
-                                <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.melee_attack }}
-                            {% elif object.frostbite %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}"> {{ object.melee_attack }}
-                            {% elif object.sundered_armour %}
-                                <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.melee_attack }}
-                            {% elif object.weeping_blade %}
-                                <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}"> {{ object.melee_attack }}
-                            {% elif object.disturbed %}
-                                <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.melee_attack }}
-                            {% elif object.charmed %}
-                                <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}"> {{ object.melee_attack }}
-                            {% elif object.contaminated %}
-                                <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.melee_attack }}
-                            {% else %}
-                                {{ object.melee_attack }}
-                            {% endif %}
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_attack.png' %}"> Melee Attack: </a>
+                                <a href="#" style="text-decoration : none" class="attributes">
+                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" class="hide_image" id="melee_fire_attack"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image"  id="melee_magic_attack"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image"  id="melee_poison_attack"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}" class="hide_image"  id="frostbite"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %} " class="hide_image"  id="sundered_armour"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}" class="hide_image"  id="weeping_blade"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image"  id="disturbed"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}" class="hide_image"  id="charmed"></div>
+                                        <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image"  id="contaminated"></div>
+                                        <div id="unit_melee_attack"></div>
                                 </a>
                         </label>
                         <ul class="group-list mb-a">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}"> Attack Interval: </a>
-                                <a href="#">{{ object.attack_interval }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}"> Attack Interval: </a>
+                                <a href="#" style="text-decoration : none" id="unit_attack_interval">{{ object.attack_interval }}</a>
                             </label>
                         </ul>
                       </li>
@@ -224,8 +145,8 @@
                 <div>
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}"> Melee Defence: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.melee_defence }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}"> Melee Defence: </a>
+                                <a href="#" style="text-decoration : none" id="unit_melee_defence">{{ object.melee_defence }}</a>
                         </label>
                     </ul>
                 </div>
@@ -235,43 +156,30 @@
                       <li>
                         <input id="Weapon Strength" type="checkbox" hidden />
                         <label for="Weapon Strength" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Weapon Strength: </a>
-                                <a href="#" class="text-white ml-auto">
-                                {% if object.melee_ap_yes_no and object.melee_bonus_large_yes_no and object.melee_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.weapon_strenght }}
-                                {% elif object.melee_ap_yes_no and object.melee_bonus_large_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> {{ object.weapon_strenght }}
-                                {% elif object.melee_ap_yes_no and object.melee_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.weapon_strenght }}
-                                {% elif object.melee_bonus_large_yes_no and object.melee_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.weapon_strenght }}
-                                {% elif object.melee_ap_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> {{ object.weapon_strenght }}
-                                {% elif object.melee_bonus_large_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> {{ object.weapon_strenght }}
-                                {% elif object.melee_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.weapon_strenght }}
-                                {% else %}
-                                {{ object.weapon_strenght }}
-                                {% endif %}
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Weapon Strength: </a>
+                                <a href="#" style="text-decoration : none" class="attributes">
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image" id="ap_damage"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image" id="bonus_vs_inf"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image" id="bonus_vs_large"></div>
+                                    <div id="unit_weapon_strength"></div>
                                 </a>
                         </label>
                         <ul class="group-list mb-0">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Base Damage: </a>
-                                <a href="#">{{ object.base_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Base Damage: </a>
+                                <a href="#" style="text-decoration : none" id="unit_base_damage">{{ object.base_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}"> AP Damage: </a>
-                                <a href="#">{{ object.ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}"> AP Damage: </a>
+                                <a href="#" style="text-decoration : none" id="unit_ap_damage">{{ object.ap_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: Upkeep: </a>
-                                <a href="#">{{ object.bonus_vs_large }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: Upkeep: </a>
+                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_large">{{ object.bonus_vs_large }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#">{{ object.bonus_vs_infantry }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
+                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_infantry">{{ object.bonus_vs_infantry }}</a>
                             </label>
                         </ul>
                       </li>
@@ -280,296 +188,114 @@
                 <div>
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}"> Charge Bonus: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.charge_bonus }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}"> Charge Bonus: </a>
+                                <a href="#" style="text-decoration : none" id="unit_charge_bonus">{{ object.charge_bonus }}</a>
                         </label>
                     </ul>
                 </div>
-            {% if unit.ammunition is 0 %}
-            {% else %}
                 <div>
-                    <ul class="nav__list mb-0">
+                    <ul class="nav__list mb-0" id="ammo_box">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_ammo.png' %}"> Ammunition: </a>
-                                <a href="#" class="text-white ml-auto">
-                                    {% if object.missile_fire_attack and object.missile_magic_attack %}
-                                        <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> {{ object.ammunition }}
-                                    {% elif object.missile_fire_attack %}
-                                        <img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}"> {{ object.ammunition }}
-                                    {% elif object.missile_magic_attack %}
-                                        <img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}"> {{ object.ammunition }}
-                                    {% else %}
-                                        {{ object.ammunition }}
-                                    {% endif %}
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_ammo.png' %}"> Ammunition: </a>
+                                <a href="#" style="text-decoration : none" class="attributes">
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_fire_attack"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image" id="missile_magic_attack"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}" class="hide_image" id="suppressed"></div>
+                                    <div id="unit_ammunition"></div>
                                 </a>
                         </label>
                     </ul>
                 </div>
 
                 <div>
-                    <ul class="nav__list mb-0">
+                    <ul class="nav__list mb-0" id="range_box">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}"> Range: </a>
-                                <a href="#" class="text-white ml-auto">{{ object.range }} </a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}"> Range: </a>
+                                <a href="#" style="text-decoration : none" id="unit_range">{{ object.range }} </a>
                         </label>
                     </ul>
                 </div>
 
                 <div>
-                    <ul class="nav__list mb-0">
+                    <ul class="nav__list mb-0" id="missile_damage_box">
                       <li>
                         <input id="Missile Damage" type="checkbox" hidden />
-
-
                           <label for="Missile Damage" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Damage: </a>
-                                <a href="#" class="text-white ml-auto">
-                                {% if object.missile_ap_yes_no and object.missile_bonus_large_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.missile_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.missile_poision_attack %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.missile_sundered_armour %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.suppressed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.missile_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.missile_poision_attack %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.missile_sundered_armour %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.suppressed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.missile_poision_attack %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.missile_sundered_armour %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.suppressed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.missile_sundered_armour %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.suppressed %}
-                                     <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.suppressed %}
-                                     <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable and object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.blinded and object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.blinded and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.blinded and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.blinded and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.monstrous_impact and object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.monstrous_impact and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.monstrous_impact and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_disturbed and object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_disturbed and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                 {% elif object.shieldbreaker and object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_ap_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_large_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_bonus_inf_yes_no %}
-                                    <img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_poision_attack %}
-                                    <img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_sundered_armour %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}"> {{ object.missile_damage }}
-                                {% elif object.suppressed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}"> {{ object.missile_damage }}
-                                {% elif object.zzzzap %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}"> {{ object.missile_damage }}
-                                {% elif object.flammable %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}"> {{ object.missile_damage }}
-                                {% elif object.blinded %}
-                                    <img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}"> {{ object.missile_damage }}
-                                {% elif object.monstrous_impact %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}"> {{ object.missile_damage }}
-                                {% elif object.missile_disturbed %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}"> {{ object.missile_damage }}
-                                {% elif object.shieldbreaker %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}"> {{ object.missile_damage }}
-                                {% elif object.burnt %}
-                                    <img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}"> {{ object.missile_damage }}
-                                {% else %}
-                                {{ object.missile_damage }}
-                                {% endif %}
+                                <a href="#" style="text-decoration : none" title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Damage: </a>
+                                <a href="#" style="text-decoration : none" class="attributes">
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_ap_yes_no"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image" id="missile_bonus_large_yes_no"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image" id="missile_bonus_inf_yes_no"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image" id="missile_poision_attack"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}" class="hide_image" id="missile_sundered_armour"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}" class="hide_image" id="zzzzap"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}" class="hide_image" id="flammable"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}" class="hide_image" id="blinded"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}" class="hide_image" id="monstrous_impact"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image" id="missile_disturbed"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}" class="hide_image" id="shieldbreaker"></div>
+                                    <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image" id="burnt"></div>
+                                    <div id="unit_missile_damage"></div>
                                 </a>
                               </label>
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Base Damage: </a>
-                                <a href="#">{{ object.missile_base_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Base Damage: </a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_base_damage">{{ object.missile_base_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Missile AP Damage: </a>
-                                <a href="#">{{ object.missile_ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Missile AP Damage: </a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_ap_damage">{{ object.missile_ap_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#">{{ object.missile_bonus_vs_infantry }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_infantry">{{ object.missile_bonus_vs_infantry }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: </a>
-                                <a href="#">{{ object.missile_bonus_vs_large }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: </a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_large">{{ object.missile_bonus_vs_large }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Explosion Base Dmg: </a>
-                                <a href="#">{{ object.explosion_base_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Explosion Base Dmg: </a>
+                                <a href="#" style="text-decoration : none" id="unit_explosion_base_damage">{{ object.explosion_base_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Explosion AP Dmg: </a>
-                                <a href="#">{{ object.explosion_ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Explosion AP Dmg: </a>
+                                <a href="#" style="text-decoration : none" id="unit_explosion_ap_damage">{{ object.explosion_ap_damage }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Shots Per Volley: </a>
-                                <a href="#">{{ object.shot_per_volley }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Shots Per Volley: </a>
+                                <a href="#" style="text-decoration : none" id="unit_shot_per_volley">{{ object.shot_per_volley }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Projectile Number: </a>
-                                <a href="#">{{ object.projectile_number }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Projectile Number: </a>
+                                <a href="#" style="text-decoration : none" id="unit_projectile_number">{{ object.projectile_number }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}"> Reload Time: </a>
-                                <a href="#">{{ object.reload_time }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}"> Reload Time: </a>
+                                <a href="#" style="text-decoration : none" id="unit_reload_time">{{ object.reload_time }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}"> Total Accuracy: </a>
-                                <a href="#">{{ object.total_accuracy }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}"> Total Accuracy: </a>
+                                <a href="#" style="text-decoration : none" id="unit_total_accuracy">{{ object.total_accuracy }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}"> Calibration Distance: </a>
-                                <a href="#">{{ object.calibration_distance }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}"> Calibration Distance: </a>
+                                <a href="#" style="text-decoration : none" id="unit_calibration_distance">{{ object.calibration_distance }}</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Calibration Area: </a>
-                                <a href="#">{{ object.calibration_area }}</a>
+                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Calibration Area: </a>
+                                <a href="#" style="text-decoration : none" id="unit_calibration_area">{{ object.calibration_area }}</a>
                             </label>
                         </ul>
                       </li>
                     </ul>
                 </div>
-            {% endif %}
                 <div>
                     <ul class="nav__list">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" class="text-white" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Fatigue Modifier:</a>
-                                <a href="#" class="text-white ml-auto">{{ object.fatigue_modifier }}</a>
+                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Fatigue Modifier:</a>
+                                <a href="#" style="text-decoration : none" id="unit_fatigue_modifier">{{ object.fatigue_modifier }}</a>
                         </label>
                     </ul>
                 </div>

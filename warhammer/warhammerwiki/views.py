@@ -6,25 +6,35 @@ from django.db.models import Q
 from .filters import UnitFilter
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
+from django.core import serializers
+import json
+from django.contrib.auth.models import User
+from .serializers import UnitSerializer
+from rest_framework import generics
+from rest_framework.permissions import IsAdminUser
+
+class UnitAPIListView(generics.ListAPIView):
+    lookup_field = 'pk'
+    queryset = Unit.objects.all()
+    serializer_class = UnitSerializer
+    permission_classes = [IsAdminUser]
 
 
 
 def trying(request):
-    context = {
-        'vzgo': 'vazgen',
-        'hello': 'world',
-    }
+    unit_json = serializers.serialize('json', Unit.objects.all())
+    data = {'unitjson':unit_json}
 
-    return JsonResponse(context)
-
+    return JsonResponse(data)
 
 def about(request):
+    all_units = Unit.objects.all()
     he_units = Unit.objects.filter(race__race_name = 'High Elves')
     de_units = Unit.objects.filter(race__race_name='Dark Elves')
     high = Race.objects.get(id=1).unit_set.all()
     all_races = Race.objects.all()
     return render(request, 'warhammerwiki/about.html',
-                  {'allraces': all_races, 'heunits':he_units, 'deunits':de_units, 'high':high})
+                  {'allunits':all_units, 'allraces': all_races, 'heunits':he_units, 'deunits':de_units, 'high':high})
 
 class RaceListView(ListView):
     model = Race

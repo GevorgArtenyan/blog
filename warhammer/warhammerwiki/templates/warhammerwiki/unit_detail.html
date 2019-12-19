@@ -2,6 +2,7 @@
 {% load static from staticfiles %}
 {% block content %}
 
+<div id="unit-{{ object.slug }}">
     <article class="media content-section">
         <img src="{{ object.unit_image.url }}">
     </article>
@@ -587,6 +588,6 @@
     </div>
   </nav>
 </header>
-
+</div>
 
 {% endblock %}

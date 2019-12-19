@@ -8,5 +8,7 @@ urlpatterns = [
     path('search/', AllUnitList.as_view(), name='search'),
     path('unit/<slug:slug>', UnitDetailView.as_view(), name='separate-unit-detail'),
     path('about/', views.about, name='about'),
+    path('trying/', views.trying, name='trying'),
+    path('api/', views.UnitAPIListView.as_view(), name='unit-list'),
 ]
 

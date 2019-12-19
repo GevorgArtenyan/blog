@@ -1,5 +1,5 @@
 {% extends "warhammerwiki/base.html" %}
-{% load static %}
+{% load static from staticfiles %}
 {% block content %}
 
 
@@ -13,22 +13,30 @@
      </select>
 </div>
 
-    {% for race in allraces %}
-    <div id="all_choices">
-        <div class='unit_choice' id="{{ race.slug }}">
-            <label>Units: </label>
-            <select class="unit">
-                        <option value="def" id="default">---- select ----</option>
-                    {% for unit in race.unit_set.all %}
-                        <option>{{ unit.unit_name }}</option>
-                    {% endfor %}
-            </select>
-        </div>
+{% for race in allraces %}
+<div id="all_choices">
+    <div class='unit_choice' id="{{ race.slug }}">
+        <label>Units: </label>
+        <select class="unit">
+                    <option value="def" id="default">---- select ----</option>
+                {% for unit in race.unit_set.all %}
+                    <option>{{ unit.unit_name }}</option>
+                {% endfor %}
+        </select>
     </div>
-    {% endfor %}
+</div>
+{% endfor %}
+
+
+<button id="btn">Submit</button>
+
+<div id="all_stats">
+    {% include 'warhammerwiki/unit.html' %}
+</div>
+
+
+
 
 <div id="trying_things"></div>
 
-
-<script src="{% static 'warhammerwiki/main.js' %}">var a = {{ allraces|safe }};</script>
 {% endblock %}

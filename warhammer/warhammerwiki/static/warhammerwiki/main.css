@@ -1,3 +1,7 @@
+#all_stats {
+  display: none;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -59,8 +63,6 @@ body,
 }
 
 
-
-
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
   font-family: Verdana;
@@ -98,11 +100,6 @@ ul {
   color: #FF0000;
 }
 
-a.article-title:hover {
-  color: #FF0000;
-  text-decoration: none;
-}
-
 .article-content {
   white-space: pre-line;
 }
@@ -119,10 +116,6 @@ a.article-title:hover {
   border-bottom: 1px solid #e3e3e3
 }
 
-.article-metadata a:hover {
-  color: #FF0000;
-  text-decoration: none;
-}
 
 .article-svg {
   width: 25px;
@@ -144,3 +137,20 @@ a.article-title:hover {
 .unit_choice {
     display: none;
 }
+
+#trying_things {
+    display: none;
+}
+
+.hide_image {
+    display: none;
+}
+
+
+.attributes > div {
+  display: inline-block;
+   margin:-5px;
+   margin-left:-4px;
+   margin-right:0px;
+
+}​
