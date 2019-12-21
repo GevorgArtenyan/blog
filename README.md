@@ -1,1 +1,4 @@
-# blog
+This code requires the following apps to be installed to work properly.
+1. crispy form(pip install django-crispy-forms)
+2. rest_frameworks(pip install djangorestframework)
+3. pillow(pip install Pillow)
