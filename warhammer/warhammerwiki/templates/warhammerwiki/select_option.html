@@ -1,0 +1,22 @@
+<div>
+    <label>Races: </label>
+    <select id="race">
+            <option>---- select ----</option>
+            {% for race in allraces %}
+                <option id="{{ race.slug }}x">{{ race.race_name }}</option>
+            {% endfor %}
+     </select>
+</div>
+{% for race in allraces %}
+<div id="all_choices">
+    <div class='unit_choice' id="{{ race.slug }}">
+        <label>Units: </label>
+        <select class="unit">
+                    <option value="def" id="default">---- select ----</option>
+                {% for unit in race.unit_set.all %}
+                    <option>{{ unit.unit_name }}</option>
+                {% endfor %}
+        </select>
+    </div>
+</div>
+{% endfor %}

@@ -3,7 +3,7 @@
 <div id="unit-{{ object.slug }}">
     <article class="media content-section" id="image-section">
     </article>
-        <h2 id="unit_name">{{ object.unit_name }}</h2>
+        <h2 id="unit_name">name</h2>
 
 
 <header role="banner">
@@ -19,12 +19,12 @@
                         <input id="SP Cost" type="checkbox" hidden />
                         <label for="SP Cost" class="card-header py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_income.png' %}"> SP Cost: </a>
-                                <a href="#" style="text-decoration : none" id="unit_cost">{{ object.cost }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_cost">sp_cost</a>
                         </label>
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Upkeep: </a>
-                                <a href="#" style="text-decoration : none" id="unit_upkeep">{{ object.upkeep }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_upkeep">upkeep</a>
                             </label>
                         </ul>
                       </li>
@@ -34,7 +34,7 @@
                     <ul class="nav__list mb-0">
                             <label class="card-header text-white py-0 d-flex justify-content-between">
                                     <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in an online battle."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_treasury.png' %}"> MP Cost: </a>
-                                    <a href="#" style="text-decoration : none" id="unit_mp_cost">{{ object.mp_cost }}</a>
+                                    <a href="#" style="text-decoration : none" id="unit_mp_cost">mp_cost</a>
                             </label>
                     </ul>
                 </div>
@@ -44,12 +44,12 @@
                         <input id="Health" type="checkbox" hidden />
                         <label for="Health" class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}"> Health: </a>
-                                <a href="#" style="text-decoration : none" id="unit_health">{{ object.health }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_health">health</a>
                         </label>
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}"> Health per Entity: </a>
-                                <a href="#" style="text-decoration : none" id="unit_health_per_entity">{{ object.health_per_entity }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_health_per_entity">health_per_entity</a>
                             </label>
                         </ul>
                       </li>
@@ -69,27 +69,27 @@
                         <ul class="group-list mb-0">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}"> Parry Chance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_parry_chance">{{ object.parry_chance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_parry_chance">parry_chance</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}"> Ward Save: </a>
-                                <a href="#" style="text-decoration : none" id="unit_ward_save">{{ object.ward_save }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_ward_save">ward_save</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}"> Physical Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_physical_resistance">{{ object.physical_resistance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_physical_resistance">pyysical_resistance</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}"> Missile Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_resistance">{{ object.missile_resistance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_resistance">missile_resistance</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}"> Magic Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_magic_resistance">{{ object.magic_resistance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_magic_resistance">magic_resistance</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}"> Fire Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_fire_resistance">{{ object.fire_resistance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_fire_resistance">fire_resistance</a>
                             </label>
                         </ul>
                       </li>
@@ -100,7 +100,7 @@
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}"> Leadership: </a>
-                                <a href="#" style="text-decoration : none" id="unit_leadership">{{ object.leadership }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_leadership">leadership</a>
                         </label>
                     </ul>
                 </div>
@@ -108,7 +108,7 @@
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}"> Speed: </a>
-                                <a href="#" style="text-decoration : none" id="unit_speed">{{ object.speed }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_speed">speed</a>
                         </label>
                     </ul>
                 </div>
@@ -135,7 +135,7 @@
                         <ul class="group-list mb-a">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}"> Attack Interval: </a>
-                                <a href="#" style="text-decoration : none" id="unit_attack_interval">{{ object.attack_interval }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_attack_interval">attack_interval</a>
                             </label>
                         </ul>
                       </li>
@@ -146,7 +146,7 @@
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}"> Melee Defence: </a>
-                                <a href="#" style="text-decoration : none" id="unit_melee_defence">{{ object.melee_defence }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_melee_defence">melee_defence</a>
                         </label>
                     </ul>
                 </div>
@@ -167,19 +167,19 @@
                         <ul class="group-list mb-0">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Base Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_base_damage">{{ object.base_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_base_damage">base_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}"> AP Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_ap_damage">{{ object.ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_ap_damage">ap_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: Upkeep: </a>
-                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_large">{{ object.bonus_vs_large }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_large">bonus_vs_large</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_infantry">{{ object.bonus_vs_infantry }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_infantry">bonus_vs_infantry</a>
                             </label>
                         </ul>
                       </li>
@@ -189,7 +189,7 @@
                     <ul class="nav__list mb-0">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}"> Charge Bonus: </a>
-                                <a href="#" style="text-decoration : none" id="unit_charge_bonus">{{ object.charge_bonus }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_charge_bonus">charge_bonus</a>
                         </label>
                     </ul>
                 </div>
@@ -211,7 +211,7 @@
                     <ul class="nav__list mb-0" id="range_box">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}"> Range: </a>
-                                <a href="#" style="text-decoration : none" id="unit_range">{{ object.range }} </a>
+                                <a href="#" style="text-decoration : none" id="unit_range">object.range</a>
                         </label>
                     </ul>
                 </div>
@@ -241,51 +241,51 @@
                         <ul class="group-list">
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Base Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_base_damage">{{ object.missile_base_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_base_damage">missile_base_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Missile AP Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_ap_damage">{{ object.missile_ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_ap_damage">missile_ap_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_infantry">{{ object.missile_bonus_vs_infantry }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_infantry">object.missile_bonus_vs_infantry</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_large">{{ object.missile_bonus_vs_large }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_large">missile_bonus_vs_large</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Explosion Base Dmg: </a>
-                                <a href="#" style="text-decoration : none" id="unit_explosion_base_damage">{{ object.explosion_base_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_explosion_base_damage">object.explosion_base_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Explosion AP Dmg: </a>
-                                <a href="#" style="text-decoration : none" id="unit_explosion_ap_damage">{{ object.explosion_ap_damage }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_explosion_ap_damage">explosion_ap_damage</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Shots Per Volley: </a>
-                                <a href="#" style="text-decoration : none" id="unit_shot_per_volley">{{ object.shot_per_volley }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_shot_per_volley">shot_per_volley</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Projectile Number: </a>
-                                <a href="#" style="text-decoration : none" id="unit_projectile_number">{{ object.projectile_number }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_projectile_number">projectile_number</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}"> Reload Time: </a>
-                                <a href="#" style="text-decoration : none" id="unit_reload_time">{{ object.reload_time }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_reload_time">reload_time</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}"> Total Accuracy: </a>
-                                <a href="#" style="text-decoration : none" id="unit_total_accuracy">{{ object.total_accuracy }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_total_accuracy">object.total_accuracy</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}"> Calibration Distance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_calibration_distance">{{ object.calibration_distance }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_calibration_distance">object.calibration_distance</a>
                             </label>
                             <label class="card-header p-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Calibration Area: </a>
-                                <a href="#" style="text-decoration : none" id="unit_calibration_area">{{ object.calibration_area }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_calibration_area">object.calibration_area</a>
                             </label>
                         </ul>
                       </li>
@@ -295,7 +295,7 @@
                     <ul class="nav__list">
                         <label class="card-header text-white py-0 d-flex justify-content-between">
                                 <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Fatigue Modifier:</a>
-                                <a href="#" style="text-decoration : none" id="unit_fatigue_modifier">{{ object.fatigue_modifier }}</a>
+                                <a href="#" style="text-decoration : none" id="unit_fatigue_modifier">fatigue_modifier</a>
                         </label>
                     </ul>
                 </div>
