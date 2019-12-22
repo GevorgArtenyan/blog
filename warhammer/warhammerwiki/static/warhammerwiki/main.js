@@ -180,7 +180,13 @@ btn.addEventListener("click", function(){
                 document.getElementById('ammo_box').style.display = 'none';
                 document.getElementById('range_box').style.display = 'none';
                 document.getElementById('missile_damage_box').style.display = 'none';
+                } else {
+                document.getElementById('ammo_box').style.display = 'block';
+                document.getElementById('range_box').style.display = 'block';
+                document.getElementById('missile_damage_box').style.display = 'block';
                 }
+
+
             };
         };
         };
