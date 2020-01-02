@@ -399,11 +399,6 @@ $(function(){
 function compareUnits() {
      var u_cost1 = parseInt($('#unit_cost').text());
      var u_cost2 = parseInt($('#unit_cost2').text());
-     var u_upkeep1 = parseInt($('#unit_upkeep').text());
-     var u_upkeep2 = parseInt($('#unit_upkeep2').text());
-     var u_mp_cost1 = parseInt($('#unit_mp_cost').text());
-     var u_mp_cost2 = parseInt($('#unit_mp_cost2').text());
-
 
      if ($('#all_stats').is(':visible') || $('#all_stats2').is(':visible')) {
      if (u_cost1 > u_cost2) {
@@ -421,6 +416,11 @@ function compareUnits() {
         $('#sp_cost_comp2').text(0);
         $('#sp_cost_comp').hide();
         $('#sp_cost_comp2').hide();
+
+
+var u_upkeep1 = parseInt($('#unit_upkeep').text());
+var u_upkeep2 = parseInt($('#unit_upkeep2').text());
+
     }
      if (u_upkeep1 > u_upkeep2) {
         $('#upkeep_comp').text('+' + (u_upkeep1 - u_upkeep2)).show();
@@ -439,6 +439,9 @@ function compareUnits() {
         $('#upkeep_comp2').hide();
     }
 
+var u_mp_cost1 = parseInt($('#unit_mp_cost').text());
+var u_mp_cost2 = parseInt($('#unit_mp_cost2').text());
+
      if (u_mp_cost1 > u_mp_cost2) {
         $('#mp_cost_comp').text('+' + (u_mp_cost1 - u_mp_cost2)).show();
         $('#mp_cost_comp2').text('-' + (u_mp_cost1 - u_mp_cost2)).show();
@@ -455,6 +458,73 @@ function compareUnits() {
         $('#mp_cost_comp').hide();
         $('#mp_cost_comp2').hide();
     }
+
+var u_health1 = parseInt($('#unit_health').text());
+var u_health2 = parseInt($('#unit_health2').text());
+
+     if (u_health1 > u_health2) {
+        $('#health_comp').text('+' + (u_health1 - u_health2)).show();
+        $('#health_comp2').text('-' + (u_health1 - u_health2)).show();
+        $('#health_comp').css("background-color","green");
+        $('#health_comp2').css("background-color","red");
+    } else if (u_mp_cost2 > u_mp_cost1) {
+        $('#health_comp').text('-' + (u_health2 - u_health1)).show();
+        $('#health_comp2').text('+' + (u_health2 - u_health1)).show();
+        $('#health_comp2').css("background-color","green");
+        $('#health_comp').css("background-color","red");
+    } else {
+        $('#health_comp').text(0);
+        $('#health_comp2').text(0);
+        $('#health_comp').hide();
+        $('#health_comp2').hide();
+    }
+
+
+var u_health_per_entity1 = parseInt($('#unit_health_per_entity').text());
+var u_health_per_entity2 = parseInt($('#unit_health_per_entity2').text());
+
+     if (u_health_per_entity1 > u_health_per_entity2) {
+        $('#health_per_entity_comp').text('+' + (u_health_per_entity1 - u_health_per_entity2)).show();
+        $('#health_per_entity_comp2').text('-' + (u_health_per_entity1 - u_health_per_entity2)).show();
+        $('#health_per_entity_comp').css("background-color","green");
+        $('#health_per_entity_comp2').css("background-color","red");
+    } else if (u_health_per_entity2 > u_health_per_entity1) {
+        $('#health_per_entity_comp').text('-' + (u_health_per_entity2 - u_health_per_entity1)).show();
+        $('#health_per_entity_comp2').text('+' + (u_health_per_entity2 - u_health_per_entity1)).show();
+        $('#health_per_entity_comp2').css("background-color","green");
+        $('#health_per_entity_comp').css("background-color","red");
+    } else {
+        $('#health_per_entity_comp').text(0);
+        $('#health_per_entity_comp2').text(0);
+        $('#health_per_entity_comp').hide();
+        $('#health_per_entity_comp2').hide();
+    }
+
+
+var u_armour1 = parseInt($('#unit_armour').text());
+var u_armour2 = parseInt($('#unit_armour2').text());
+
+     if (u_armour1 > u_armour2) {
+        $('#armour_comp').text('+' + (u_armour1 - u_armour2)).show();
+        $('#armour_comp2').text('-' + (u_armour1 - u_armour2)).show();
+        $('#armour_comp').css("background-color","green");
+        $('#armour_comp2').css("background-color","red");
+    } else if (u_armour2 > u_armour1) {
+        $('#armour_comp').text('-' + (u_armour2 - u_armour1)).show();
+        $('#armour_comp2').text('+' + (u_armour2 - u_armour1)).show();
+        $('#armour_comp2').css("background-color","green");
+        $('#armour_comp').css("background-color","red");
+    } else {
+        $('#armour_comp').text(0);
+        $('#armour_comp2').text(0);
+        $('#armour_comp').hide();
+        $('#armour_comp2').hide();
+    }
+
+
+
+
+
     }
 
 
