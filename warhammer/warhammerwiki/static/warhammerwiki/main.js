@@ -41,9 +41,7 @@ btn.addEventListener("click", function(){
            $('#all_stats2').hide()
         } else {
            $('#all_stats2').show()
-
         }
-
     }
     ourRequest.send()
 });
@@ -194,10 +192,9 @@ btn.addEventListener("click", function(){
                 document.getElementById('range_box').style.display = 'block';
                 document.getElementById('missile_damage_box').style.display = 'block';
                 }
-
-
             };
         };
+                compareUnits()
         };
 
 
@@ -381,6 +378,7 @@ function renderHTML2(data) {
             };
         };
     };
+    compareUnits()
     };
 
 
@@ -398,12 +396,16 @@ $(function(){
 });
 
 
-$('#compare_btn').click(function() {
+function compareUnits() {
      var u_cost1 = parseInt($('#unit_cost').text());
      var u_cost2 = parseInt($('#unit_cost2').text());
      var u_upkeep1 = parseInt($('#unit_upkeep').text());
      var u_upkeep2 = parseInt($('#unit_upkeep2').text());
+     var u_mp_cost1 = parseInt($('#unit_mp_cost').text());
+     var u_mp_cost2 = parseInt($('#unit_mp_cost2').text());
 
+
+     if ($('#all_stats').is(':visible') || $('#all_stats2').is(':visible')) {
      if (u_cost1 > u_cost2) {
         $('#sp_cost_comp').text('+' + (u_cost1 - u_cost2)).show();
         $('#sp_cost_comp2').text('-' + (u_cost1 - u_cost2)).show();
@@ -420,9 +422,6 @@ $('#compare_btn').click(function() {
         $('#sp_cost_comp').hide();
         $('#sp_cost_comp2').hide();
     }
-
-
-
      if (u_upkeep1 > u_upkeep2) {
         $('#upkeep_comp').text('+' + (u_upkeep1 - u_upkeep2)).show();
         $('#upkeep_comp2').text('-' + (u_upkeep1 - u_upkeep2)).show();
@@ -440,12 +439,27 @@ $('#compare_btn').click(function() {
         $('#upkeep_comp2').hide();
     }
 
+     if (u_mp_cost1 > u_mp_cost2) {
+        $('#mp_cost_comp').text('+' + (u_mp_cost1 - u_mp_cost2)).show();
+        $('#mp_cost_comp2').text('-' + (u_mp_cost1 - u_mp_cost2)).show();
+        $('#mp_cost_comp').css("background-color","red");
+        $('#mp_cost_comp2').css("background-color","green");
+    } else if (u_mp_cost2 > u_mp_cost1) {
+        $('#mp_cost_comp').text('-' + (u_mp_cost2 - u_mp_cost1)).show();
+        $('#mp_cost_comp2').text('+' + (u_mp_cost2 - u_mp_cost1)).show();
+        $('#mp_cost_comp2').css("background-color","red");
+        $('#mp_cost_comp').css("background-color","green");
+    } else {
+        $('#mp_cost_comp').text(0);
+        $('#mp_cost_comp2').text(0);
+        $('#mp_cost_comp').hide();
+        $('#mp_cost_comp2').hide();
+    }
+    }
 
 
 
-
-
-});
+}
 
 
 
