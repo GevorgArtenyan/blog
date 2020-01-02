@@ -7,7 +7,7 @@ urlpatterns = [
     path('race/<slug:race_name_slug>/unit/<slug:slug>/', UnitDetailView.as_view(), name='unit-detail'),
     path('search/', AllUnitList.as_view(), name='search'),
     path('unit/<slug:slug>', UnitDetailView.as_view(), name='separate-unit-detail'),
-    path('about/', views.about, name='about'),
+    path('compare/', views.about, name='compare'),
     path('trying/', views.trying, name='trying'),
     path('api/', views.UnitAPIListView.as_view(), name='unit-list'),
 ]

@@ -2,6 +2,11 @@
   display: none;
 }
 
+#all_stats2 {
+  display: none;
+}
+
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -35,26 +40,26 @@
 
 html,
 body,
-#Container {
+.Container {
   height: 100%;
   color: white;
 }
 
-#Container:before {
+.Container:before {
   content: '';
   height: 100%;
   float: left;
 }
 
 
-#Stretch:after {
+.Stretch:after {
   content: '';
   display: block;
   clear: both;
 }
 
-#Container,
-#Container>div {
+.Container,
+.Container>div {
   -moz-transform: rotateX(180deg);
   -ms-transform: rotateX(180deg);
   -o-transform: rotate(180deg);
@@ -138,19 +143,112 @@ ul {
     display: none;
 }
 
-#trying_things {
+
+.unit_choice2 {
     display: none;
 }
 
+
 .hide_image {
     display: none;
+    margin: -3px;
+    margin-left: -1px;
+    padding-right: 4px
+
+}
+
+
+
+.attributes {
+    float: right;
 }
 
 
 .attributes > div {
-  display: inline-block;
-   margin:-5px;
-   margin-left:-4px;
-   margin-right:0px;
+   display: inline-block;
+   margin-left: -13px;
+   padding-right: 7px;
 
 }​
+
+.all-boxes  {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.one-line {
+    display: inline-block;
+}
+
+.box {
+    background: #101010;
+    color: white;
+    display: inline-block;
+    width: 300px;
+    height: 35px;
+    font-family: Verdana,Geneva,sans-serif;
+    vertical-align: middle;
+    line-height: 160%;
+    font-size: 1.1em;
+    padding-left:7px;
+
+}
+
+.collapsed_box .box {
+    background:#383838;
+    color: white;
+    display: inline-block;
+    width: 300px;
+    height: 35px;
+    font-family: Verdana,Geneva,sans-serif;
+    vertical-align: middle;
+    line-height: 160%;
+    font-size: 1.1em;
+    padding-left:7px;
+
+}
+
+
+.box  {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.box-name {
+    float: left;
+}
+
+.box-num {
+    float: right;
+    padding-right: 7px;
+}
+
+box-num div {
+    display: inline-block;
+}
+
+.comparison {
+    background: green;
+    color: white;
+    display: inline;
+    height: 20px;
+    font-family: Verdana,Geneva,sans-serif;
+    line-height: -25px;
+    font-size: 1.0em;
+    padding-left:1px;
+    padding-right:2px;
+    margin: -5px
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+}
+

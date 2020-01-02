@@ -1,305 +1,370 @@
 {% load static from staticfiles %}
 
 <div id="unit-{{ object.slug }}">
-    <article class="media content-section" id="image-section">
+    <article id="image-section">
     </article>
         <h2 id="unit_name">name</h2>
+</div>
 
-
-<header role="banner">
-  <nav class="nav" role="navigation">
-    <div id="Container">
-      <div id="Copyright">
+    <section data-toggle="collapse" data-target="#cost">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_income.png' %}"> SP Cost:</div>
+              <div class="box-num" id="unit_cost">0</div>
+          </div>
+          <div class="comparison" id="sp_cost_comp"></div>
+    </section>
+      <div class="collapse" id="cost">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Upkeep:</div>
+                <div class="box-num" id="unit_upkeep">0</div>
+            </div>
+            <div class="comparison" id="upkeep_comp"></div>
+        </section>
       </div>
-                <div id="Stretch">
-        <!-- Other elements here -->
-                <div>
-                    <ul class="nav__list mb-0">
-                      <li>
-                        <input id="SP Cost" type="checkbox" hidden />
-                        <label for="SP Cost" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_income.png' %}"> SP Cost: </a>
-                                <a href="#" style="text-decoration : none" id="unit_cost">sp_cost</a>
-                        </label>
-                        <ul class="group-list">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Upkeep: </a>
-                                <a href="#" style="text-decoration : none" id="unit_upkeep">upkeep</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav__list mb-0">
-                            <label class="card-header text-white py-0 d-flex justify-content-between">
-                                    <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in an online battle."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_treasury.png' %}"> MP Cost: </a>
-                                    <a href="#" style="text-decoration : none" id="unit_mp_cost">mp_cost</a>
-                            </label>
-                    </ul>
-                </div>
-                    <ul class="nav__list mb-0">
-
-                        <li>
-                        <input id="Health" type="checkbox" hidden />
-                        <label for="Health" class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}"> Health: </a>
-                                <a href="#" style="text-decoration : none" id="unit_health">health</a>
-                        </label>
-                        <ul class="group-list">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" data-tooltip title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}"> Health per Entity: </a>
-                                <a href="#" style="text-decoration : none" id="unit_health_per_entity">health_per_entity</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                <div>
-                    <ul class="nav__list mb-0">
-                      <li>
-                        <input id="Armour" type="checkbox" hidden />
-                        <label for="Armour" class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" data-tooltip title="How resistant a unit is to missile fire and melee attacks."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour: </a>
-                                <a href="#" style="text-decoration : none" class="attributes">
-                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield1.png' %}" data-tooltip title="35% chance to block front missile attacks" class="hide_image" id="bronze_shield"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield2.png' %}" data-tooltip title="60% chance to block front missile attacks" class="hide_image" id="silver_shield"></div>
-                                        <div id="unit_armour"></div>
-                                </a>
-                        </label>
-                        <ul class="group-list mb-0">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}"> Parry Chance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_parry_chance">parry_chance</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}"> Ward Save: </a>
-                                <a href="#" style="text-decoration : none" id="unit_ward_save">ward_save</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}"> Physical Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_physical_resistance">pyysical_resistance</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}"> Missile Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_resistance">missile_resistance</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaa"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}"> Magic Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_magic_resistance">magic_resistance</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}"> Fire Resistance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_fire_resistance">fire_resistance</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}"> Leadership: </a>
-                                <a href="#" style="text-decoration : none" id="unit_leadership">leadership</a>
-                        </label>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav__list mb-0">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}"> Speed: </a>
-                                <a href="#" style="text-decoration : none" id="unit_speed">speed</a>
-                        </label>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0">
-                      <li>
-                        <input id="Melee Attack" type="checkbox" hidden />
-                        <label for="Melee Attack" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_attack.png' %}"> Melee Attack: </a>
-                                <a href="#" style="text-decoration : none" class="attributes">
-                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" class="hide_image" id="melee_fire_attack"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image"  id="melee_magic_attack"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image"  id="melee_poison_attack"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}" class="hide_image"  id="frostbite"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %} " class="hide_image"  id="sundered_armour"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}" class="hide_image"  id="weeping_blade"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image"  id="disturbed"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}" class="hide_image"  id="charmed"></div>
-                                        <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image"  id="contaminated"></div>
-                                        <div id="unit_melee_attack"></div>
-                                </a>
-                        </label>
-                        <ul class="group-list mb-a">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}"> Attack Interval: </a>
-                                <a href="#" style="text-decoration : none" id="unit_attack_interval">attack_interval</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}"> Melee Defence: </a>
-                                <a href="#" style="text-decoration : none" id="unit_melee_defence">melee_defence</a>
-                        </label>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0">
-                      <li>
-                        <input id="Weapon Strength" type="checkbox" hidden />
-                        <label for="Weapon Strength" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Weapon Strength: </a>
-                                <a href="#" style="text-decoration : none" class="attributes">
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image" id="ap_damage"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image" id="bonus_vs_inf"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image" id="bonus_vs_large"></div>
-                                    <div id="unit_weapon_strength"></div>
-                                </a>
-                        </label>
-                        <ul class="group-list mb-0">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Base Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_base_damage">base_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}"> AP Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_ap_damage">ap_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: Upkeep: </a>
-                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_large">bonus_vs_large</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#" style="text-decoration : none" id="unit_bonus_vs_infantry">bonus_vs_infantry</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav__list mb-0">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}"> Charge Bonus: </a>
-                                <a href="#" style="text-decoration : none" id="unit_charge_bonus">charge_bonus</a>
-                        </label>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav__list mb-0" id="ammo_box">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_ammo.png' %}"> Ammunition: </a>
-                                <a href="#" style="text-decoration : none" class="attributes">
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_fire_attack"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image" id="missile_magic_attack"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}" class="hide_image" id="suppressed"></div>
-                                    <div id="unit_ammunition"></div>
-                                </a>
-                        </label>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0" id="range_box">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}"> Range: </a>
-                                <a href="#" style="text-decoration : none" id="unit_range">object.range</a>
-                        </label>
-                    </ul>
-                </div>
-
-                <div>
-                    <ul class="nav__list mb-0" id="missile_damage_box">
-                      <li>
-                        <input id="Missile Damage" type="checkbox" hidden />
-                          <label for="Missile Damage" class="card-header py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay to recruit this unit in campaign."><i class="fa-th"></i> <img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Damage: </a>
-                                <a href="#" style="text-decoration : none" class="attributes">
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_ap_yes_no"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image" id="missile_bonus_large_yes_no"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image" id="missile_bonus_inf_yes_no"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image" id="missile_poision_attack"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}" class="hide_image" id="missile_sundered_armour"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}" class="hide_image" id="zzzzap"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}" class="hide_image" id="flammable"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}" class="hide_image" id="blinded"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}" class="hide_image" id="monstrous_impact"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image" id="missile_disturbed"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}" class="hide_image" id="shieldbreaker"></div>
-                                    <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image" id="burnt"></div>
-                                    <div id="unit_missile_damage"></div>
-                                </a>
-                              </label>
-                        <ul class="group-list">
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Base Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_base_damage">missile_base_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Missile AP Damage: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_ap_damage">missile_ap_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_infantry">object.missile_bonus_vs_infantry</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large: </a>
-                                <a href="#" style="text-decoration : none" id="unit_missile_bonus_vs_large">missile_bonus_vs_large</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Explosion Base Dmg: </a>
-                                <a href="#" style="text-decoration : none" id="unit_explosion_base_damage">object.explosion_base_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Explosion AP Dmg: </a>
-                                <a href="#" style="text-decoration : none" id="unit_explosion_ap_damage">explosion_ap_damage</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Shots Per Volley: </a>
-                                <a href="#" style="text-decoration : none" id="unit_shot_per_volley">shot_per_volley</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Projectile Number: </a>
-                                <a href="#" style="text-decoration : none" id="unit_projectile_number">projectile_number</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}"> Reload Time: </a>
-                                <a href="#" style="text-decoration : none" id="unit_reload_time">reload_time</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}"> Total Accuracy: </a>
-                                <a href="#" style="text-decoration : none" id="unit_total_accuracy">object.total_accuracy</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}"> Calibration Distance: </a>
-                                <a href="#" style="text-decoration : none" id="unit_calibration_distance">object.calibration_distance</a>
-                            </label>
-                            <label class="card-header p-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="This is how much you pay for this unit each turn."><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Calibration Area: </a>
-                                <a href="#" style="text-decoration : none" id="unit_calibration_area">object.calibration_area</a>
-                            </label>
-                        </ul>
-                      </li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="nav__list">
-                        <label class="card-header text-white py-0 d-flex justify-content-between">
-                                <a href="#" style="text-decoration : none" title="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><i class="fa-th"></i><img src="{% static 'warhammerwiki/images/icon_upkeep.png' %}"> Fatigue Modifier:</a>
-                                <a href="#" style="text-decoration : none" id="unit_fatigue_modifier">fatigue_modifier</a>
-                        </label>
-                    </ul>
-                </div>
       </div>
-    </div>
-  </nav>
-</header>
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_treasury.png' %}"> MP Cost:</div>
+              <div class="box-num" id="unit_mp_cost">0</div>
+          </div>
+          <div class="comparison" id="mp_cost_comp"></div>
+  </section>
+
+
+
+
+    <section data-toggle="collapse" data-target="#health">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_health.png' %}"> Health:</div>
+              <div class="box-num" id="unit_health">0</div>
+          </div>
+          <div class="comparison" id="health_comp"></div>
+    </section>
+      <div class="collapse" id="health">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/spacebar_unit_health_ammo.png' %}">Health per Entity:</div>
+                <div class="box-num" id="unit_health_per_entity">0</div>
+            </div>
+            <div class="comparison" id="health_per_entity_comp"></div>
+        </section>
+      </div>
+      </div>
+
+
+
+    <section data-toggle="collapse" data-target="#armour_attributes">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_armour.png' %}"> Armour:</div>
+              <div class="attributes">
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield1.png' %}" data-tooltip title="35% chance to block front missile attacks" class="hide_image" id="bronze_shield"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_shield2.png' %}" data-tooltip title="60% chance to block front missile attacks" class="hide_image" id="silver_shield"></div>
+                <div id="unit_armour">0</div>
+              </div>
+          </div>
+          <div class="comparison" id="armour_comp"></div>
+    </section>
+      <div class="collapse" id="armour_attributes">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_shield.png' %}">  Parry Chance:</div>
+                <div class="box-num" id="unit_parry_chance">0</div>
+            </div>
+            <div class="comparison" id="parry_chance_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/resistance_ward_save.png' %}"> Ward Save:</div>
+                <div class="box-num" id="unit_ward_save">0</div>
+            </div>
+            <div class="comparison" id="ward_save_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/resistance_physical.png' %}"> Physical Resistance:</div>
+                <div class="box-num" id="unit_physical_resistance">0</div>
+            </div>
+            <div class="comparison" id="physical_resistance_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/resistance_missile.png' %}"> Missile Resistance:</div>
+                <div class="box-num" id="unit_missile_resistance">0</div>
+            </div>
+            <div class="comparison" id="missile_resistance_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/resistance_magic.png' %}"> Magic Resistance:</div>
+                <div class="box-num" id="unit_magic_resistance">0</div>
+            </div>
+            <div class="comparison" id="magic_resistance_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/resistance_fire.png' %}"> Fire Resistance:</div>
+                <div class="box-num" id="unit_fire_resistance">0</div>
+            </div>
+            <div class="comparison" id="fire_resistance_comp"></div>
+        </section>
+      </div>
+      </div>
+
+
+
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_morale.png' %}"> Leadership:</div>
+              <div class="box-num" id="unit_leadership">0</div>
+          </div>
+          <div class="comparison" id="leadership_comp"></div>
+  </section>
+
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_speed.png' %}"> Speed:</div>
+              <div class="box-num" id="unit_speed">0</div>
+          </div>
+          <div class="comparison" id="speed_comp"></div>
+  </section>
+
+    <section data-toggle="collapse" data-target="#melee_attack">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_attack.png' %}"> Melee Attack:</div>
+              <div class="attributes">
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" class="hide_image" id="melee_fire_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image"  id="melee_magic_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image"  id="melee_poison_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_dlc08_unit_contact_frostbite.png' %}" class="hide_image"  id="frostbite"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %} " class="hide_image"  id="sundered_armour"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_weeping_blade.png' %}" class="hide_image"  id="weeping_blade"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image"  id="disturbed"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_charmed.png' %}" class="hide_image"  id="charmed"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image"  id="contaminated"></div>
+                <div id="unit_melee_attack">0</div>
+              </div>
+          </div>
+          <div class="comparison" id="melee_attack_comp"></div>
+    </section>
+      <div class="collapse" id="melee_attack">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_status_melee_24px.png' %}"> Attack Interval:</div>
+                <div class="box-num" id="unit_attack_interval">0</div>
+            </div>
+            <div class="comparison" id="attack_interval_comp"></div>
+        </section>
+      </div>
+      </div>
+
+
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_defence.png' %}"> Melee Defence:</div>
+              <div class="box-num" id="unit_melee_defence">0</div>
+          </div>
+          <div class="comparison" id="melee_defence_comp"></div>
+  </section>
+
+    <section data-toggle="collapse" data-target="#weapon_damage">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Weapon Strength:</div>
+              <div class="attributes">
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image"  id="ap_damage"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image"  id="bonus_vs_inf"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image"  id="bonus_vs_large"></div>
+                <div id="unit_weapon_strength">0</div>
+              </div>
+          </div>
+          <div class="comparison" id="weapon_damage_comp"></div>
+    </section>
+      <div class="collapse" id="weapon_damage">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_damage.png' %}"> Base Damage:</div>
+                <div class="box-num" id="unit_base_damage">0</div>
+            </div>
+            <div class="comparison" id="base_damage_comp"></div>
+        </section>
+                <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}"> AP Damage:</div>
+                <div class="box-num" id="unit_ap_damage">0</div>
+            </div>
+            <div class="comparison" id="ap_damage_comp"></div>
+        </section>
+                <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large:</div>
+                <div class="box-num" id="unit_bonus_vs_large">0</div>
+            </div>
+            <div class="comparison" id="bonus_vs_large_comp"></div>
+        </section>
+                <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry:</div>
+                <div class="box-num" id="unit_bonus_vs_infantry">0</div>
+            </div>
+            <div class="comparison" id="bonus_vs_inf_comp"></div>
+        </section>
+      </div>
+      </div>
+
+
+
+
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_charge_bonus.png' %}"> Charge Bonus:</div>
+              <div class="box-num" id="unit_charge_bonus">0</div>
+          </div>
+          <div class="comparison" id="charge_bonus_comp"></div>
+  </section>
+
+  <section id="ammo_box">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_ammo.png' %}"> Ammunition:</div>
+              <div class="attributes">
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_flaming.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_fire_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_magical.png' %}" class="hide_image" id="missile_magic_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_suppressive_fire.png' %}" class="hide_image" id="suppressed"></div>
+                <div id="unit_ammunition">0</div>
+              </div>
+          </div>
+          <div class="comparison" id="ammunition_comp"></div>
+  </section>
+
+  <section id="range_box">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_range.png' %}"> Range:</div>
+              <div class="box-num" id="unit_range">0</div>
+          </div>
+          <div class="comparison" id="range_comp"></div>
+  </section>
+
+
+
+
+<section data-toggle="collapse" data-target="#missile_damage" id="missile_damage_box">
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Damage:</div>
+              <div class="attributes">
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing.png' %}" title="Armour-Piercing Damage" class="hide_image" id="missile_ap_yes_no"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}" class="hide_image" id="missile_bonus_large_yes_no"></div>
+                <div><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}" class="hide_image" id="missile_bonus_inf_yes_no"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_main_unit_contact_poison.png' %}" class="hide_image" id="missile_poision_attack"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_sundered_armour.png' %}" class="hide_image" id="missile_sundered_armour"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_passive_zzzap.png' %}" class="hide_image" id="zzzzap"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc12_unit_contact_flammable.png' %}" class="hide_image" id="flammable"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh_dlc06_unit_contact_blinded.png' %}" class="hide_image" id="blinded"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_monstrous_impact.png' %}" class="hide_image" id="monstrous_impact"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc11_unit_contact_disrupted.png' %}" class="hide_image" id="missile_disturbed"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_dlc09_unit_contact_shieldbreaker.png' %}" class="hide_image" id="shieldbreaker"></div>
+                <div><img src="{% static 'warhammerwiki/images/wh2_main_unit_contact_plague_monk_censer_morale.png' %}" class="hide_image" id="burnt"></div>
+                <div id="unit_missile_damage">0</div>
+              </div>
+          </div>
+          <div class="comparison" id="missile_damage_comp"></div>
+    </section>
+      <div class="collapse" id="missile_damage">
+      <div class="collapsed_box">
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Missile Base Damage:</div>
+                <div class="box-num" id="unit_missile_base_damage">0</div>
+            </div>
+            <div class="comparison" id="missile_base_damage_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Missile AP Damage:</div>
+                <div class="box-num" id="unit_missile_ap_damage">0</div>
+            </div>
+            <div class="comparison" id="missile_ap_damage_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_infantry.png' %}"> Bonus vs. Infantry:</div>
+                <div class="box-num" id="unit_missile_bonus_vs_infantry">0</div>
+            </div>
+            <div class="comparison" id="missile_bonus_vs_inf_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_bonus_vs_large.png' %}"> Bonus vs. Large:</div>
+                <div class="box-num" id="unit_missile_bonus_vs_large">0</div>
+            </div>
+            <div class="comparison" id="missile_bonus_vs_large_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_stat_ranged_damage.png' %}"> Explosion Base Dmg:</div>
+                <div class="box-num" id="unit_explosion_base_damage">0</div>
+            </div>
+            <div class="comparison" id="explosion_base_dmg_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/modifier_icon_armour_piercing_ranged.png' %}"> Explosion AP Dmg:</div>
+                <div class="box-num" id="unit_explosion_ap_damage">0</div>
+            </div>
+            <div class="comparison" id="explosion_ap_dmg_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Shots Per Volley:</div>
+                <div class="box-num" id="unit_shot_per_volley">0</div>
+            </div>
+            <div class="comparison" id="shots_per_volley_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_status_firing_24px.png' %}"> Projectile Number:</div>
+                <div class="box-num" id="unit_projectile_number">0</div>
+            </div>
+            <div class="comparison" id="projectile_number_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_cooldown.png' %}"> Reload Time:</div>
+                <div class="box-num" id="unit_reload_time">0</div>
+            </div>
+            <div class="comparison" id="reload_time_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/spacebar_fire_arc.png' %}"> Total Accuracy:</div>
+                <div class="box-num" id="unit_total_accuracy">0</div>
+            </div>
+            <div class="comparison" id="total_accuracy_comp"></div>
+        </section>
+          <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_distance_to_target.png' %}"> Calibration Distance:</div>
+                <div class="box-num" id="unit_calibration_distance">0</div>
+            </div>
+            <div class="comparison" id="calibration_distance_comp"></div>
+        </section>
+        <section>
+            <div class="box">
+                <div class="box-name"><img src="{% static 'warhammerwiki/images/help_page_drag.png' %}"> Calibration Area:</div>
+                <div class="box-num" id="unit_calibration_area">0</div>
+            </div>
+            <div class="comparison" id="calibration_area_comp"></div>
+        </section>
+      </div>
+      </div>
+
+  <section>
+          <div class="box">
+              <div class="box-name"><img src="{% static 'warhammerwiki/images/icon_status_fatigue_24px.png' %}"> Fatigue Modifier:</div>
+              <div class="box-num" id="unit_fatigue_modifier">0</div>
+          </div>
+          <div class="comparison" id="fatigue_modifier_comp"></div>
+  </section>

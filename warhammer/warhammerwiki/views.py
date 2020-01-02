@@ -28,7 +28,7 @@ def trying(request):
 
 def about(request):
     all_races = Race.objects.all()
-    return render(request, 'warhammerwiki/about.html', {'allraces':all_races})
+    return render(request, 'warhammerwiki/compare.html', {'allraces':all_races})
 
 class RaceListView(ListView):
     model = Race
