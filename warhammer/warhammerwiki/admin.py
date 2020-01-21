@@ -5,7 +5,9 @@ class RaceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('race_name',)}
 
 class UnitAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('unit_name',)}
+    prepopulated_fields = {'slug':('key',)}
 
 admin.site.register(Race, RaceAdmin)
 admin.site.register(Unit, UnitAdmin)
+
+

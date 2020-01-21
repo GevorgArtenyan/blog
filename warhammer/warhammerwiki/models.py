@@ -22,12 +22,10 @@ class Race(models.Model):
         return self.race_name
 
 
-
-
-
-
 class Unit(models.Model):
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
+    key = models.CharField(max_length=200)
+    weight = models.CharField(max_length=150)
     unit_name = models.CharField(max_length=200)
     unit_image = models.ImageField(upload_to='profile_pics')
     cost = models.IntegerField()
@@ -98,15 +96,16 @@ class Unit(models.Model):
     calibration_distance = models.IntegerField()
     calibration_area = models.DecimalField(max_digits=5, decimal_places=2)
     fatigue_modifier = models.IntegerField()
-
-
-
-
     slug = models.SlugField(unique=True)
 
+
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.unit_name)
+        self.slug = slugify(self.key)
         super(Unit, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.unit_name
+
+
+
+

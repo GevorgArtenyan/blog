@@ -10,5 +10,6 @@ urlpatterns = [
     path('compare/', views.about, name='compare'),
     path('trying/', views.trying, name='trying'),
     path('api/', views.UnitAPIListView.as_view(), name='unit-list'),
+    path('example/', views.example, name='example'),
 ]
 

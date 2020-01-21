@@ -80,3 +80,7 @@ class AllUnitList(ListView):
         context = super().get_context_data(**kwargs)
         context['filter'] = UnitFilter(self.request.GET, queryset=self.get_queryset())
         return context
+
+
+def example(request):
+    return render(request, 'warhammerwiki/example.html')
