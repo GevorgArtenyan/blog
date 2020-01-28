@@ -13,6 +13,8 @@ file_name8 = 'battle_entities.xml'
 file_name9 = 'unit_shield_types.xml'
 file_name10 = 'mounts.xml'
 file_name11 = 'battlefield_engines.xml'
+file_name12 = 'unit_variants.xml'
+file_name13 = 'units_custom_battle_permissions.xml'
 
 full_file = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name))
 full_file2 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name2))
@@ -25,6 +27,8 @@ full_file8 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', 
 full_file9 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name9))
 full_file10 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name10))
 full_file11 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name11))
+full_file12 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name12))
+full_file13 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name13))
 
 
 dom_land_units = ElementTree.parse(full_file)
@@ -38,6 +42,8 @@ dom_battle_entities = ElementTree.parse(full_file8)
 dom_unit_shield_types = ElementTree.parse(full_file9)
 dom_mounts = ElementTree.parse(full_file10)
 dom_engines = ElementTree.parse(full_file11)
+dom_unit_variants = ElementTree.parse(full_file12)
+dom_units_custom_battle_permissions = ElementTree.parse(full_file13)
 
 land_units = dom_land_units.getroot()
 main_units = dom_main_units.getroot()
@@ -50,6 +56,8 @@ battle_entities = dom_battle_entities.getroot()
 unit_shield_types = dom_unit_shield_types.getroot()
 mounts = dom_mounts.getroot()
 engines = dom_engines.getroot()
+unit_variants = dom_unit_variants.getroot()
+units_custom_battle_permissions = dom_units_custom_battle_permissions.getroot()
 
 main_units_list = []
 land_units_list = []
@@ -62,7 +70,11 @@ projectiles_explosions_list = []
 battle_entities_list = []
 unit_shield_types_list = []
 mounts_list = []
+units_custom_battle_permissions_list = []
+lord_portraits_list = []
 engines_list = []
+unit_variants_list = []
+artilery_list = []
 
 all_stats = []
 
@@ -114,13 +126,17 @@ for lu in land_units.findall('land_units'):
 
 for mw in melee_weapon.findall('melee_weapons'):
     weapon_key = mw.find('key').text
-    base_damage = mw.find('damage').text
-    ap_damage = mw.find('ap_damage').text
-    bonus_vs_infantry = mw.find('bonus_v_infantry').text
-    bonus_vs_large = mw.find('bonus_v_large').text
+    base_damage = int(mw.find('damage').text)
+    ap_damage = int(mw.find('ap_damage').text)
+    bonus_vs_infantry = int(mw.find('bonus_v_infantry').text)
+    bonus_vs_large = int(mw.find('bonus_v_large').text)
     melee_attack_interval = mw.find('melee_attack_interval').text
-    melee_weapon_list.append({'weapon_key':weapon_key, 'weapon_damage':int(base_damage)+int(ap_damage), 'base_damage':base_damage, 'ap_damage':ap_damage,
-                  'bonus_vs_large':bonus_vs_large, 'bonus_vs_infantry':bonus_vs_infantry, 'melee_attack_interval':melee_attack_interval})
+    magical_attack = int(mw.find('is_magical').text)
+    contact_phase = mw.find('contact_phase').text
+    melee_fire_attack = int(mw.find('ignition_amount').text)
+    melee_weapon_list.append({'weapon_key':weapon_key, 'weapon_damage':base_damage+ap_damage, 'base_damage':base_damage, 'ap_damage':ap_damage,
+                  'bonus_vs_large':bonus_vs_large, 'bonus_vs_infantry':bonus_vs_infantry, 'melee_attack_interval':melee_attack_interval,
+                              'magical_attack':magical_attack, 'contact_phase':contact_phase, 'melee_fire_attack':melee_fire_attack})
 
 
 
@@ -140,12 +156,16 @@ for pr in projectiles.findall('projectiles'):
     calibration_area = pr.find('calibration_area').text
     calibration_distance = pr.find('calibration_distance').text
     reload_time = pr.find('base_reload_time').text
-    bonus_vs_infantry = pr.find('bonus_v_infantry').text
-    bonus_vs_large = pr.find('bonus_v_large').text
+    missile_bonus_vs_infantry = int(pr.find('bonus_v_infantry').text)
+    missile_bonus_vs_large = int(pr.find('bonus_v_large').text)
     shots_per_volley = pr.find('shots_per_volley').text
+    missile_magic_attack = int(pr.find('is_magical').text)
+    missile_fire_attack = int(pr.find('ignition_amount').text)
+    contact_stat_effect = pr.find('contact_stat_effect').text
     projectiles_list.append({'missile_ap_damage':missile_ap_damage, 'projectiles_key':projectiles_key, 'missile_base_damage':missile_base_damage, 'range':range, 'projectile_number':projectile_number,
                   'calibration_area':calibration_area, 'calibration_distance':calibration_distance, 'reload_time':reload_time, 'shots_per_volley':shots_per_volley,
-                  'bonus_vs_infantry':bonus_vs_infantry, 'bonus_vs_large': bonus_vs_large, 'explosion_type':explosion_type})
+                  'missile_bonus_vs_infantry':missile_bonus_vs_infantry, 'missile_bonus_vs_large': missile_bonus_vs_large, 'explosion_type':explosion_type, 'missile_magic_attack':missile_magic_attack,
+                             'missile_fire_attack':missile_fire_attack, 'contact_stat_effect':contact_stat_effect})
 
 
 
@@ -162,8 +182,9 @@ for pe in projectiles_explosions.findall('projectiles_explosions'):
     projectiles_explosions_shrapnel = pe.find('shrapnel').text
     explosion_base_damage = int(pe.find('detonation_damage').text)
     explosion_ap_damage = int(pe.find('detonation_damage_ap').text)
+    explosion_contact_phase_effect = pe.find('contact_phase_effect').text
     projectiles_explosions_list.append({'projectiles_explosions_shrapnel':projectiles_explosions_shrapnel, 'explosion_base_damage':explosion_base_damage,
-                                        'explosion_ap_damage':explosion_ap_damage, 'projectiles_explosions_key':projectiles_explosions_key})
+                                        'explosion_ap_damage':explosion_ap_damage, 'projectiles_explosions_key':projectiles_explosions_key, 'explosion_contact_phase_effect':explosion_contact_phase_effect})
 
 
 
@@ -177,6 +198,16 @@ for en in battle_entities.findall('battle_entities'):
     battle_entities_list.append({'battle_entities_key':battle_entities_key, 'run_speed':run_speed, 'fly_speed':fly_speed, 'battle_entities_hit_points':battle_entities_hit_points})
 
 
+for var in unit_variants.findall('unit_variants'):
+    unit_variants_key = var.find('unit').text
+    unit_card = var.find('unit_card').text
+    unit_variants_list.append({'unit_variants_key':unit_variants_key, 'unit_card':unit_card})
+
+
+for per in units_custom_battle_permissions.findall('units_custom_battle_permissions'):
+    units_custom_battle_permissions_unit_key = per.find('unit').text
+    units_custom_battle_permissions_lord_portrait = per.find('general_portrait').text
+    units_custom_battle_permissions_list.append({'units_custom_battle_permissions_unit_key':units_custom_battle_permissions_unit_key, 'units_custom_battle_permissions_lord_portrait':units_custom_battle_permissions_lord_portrait})
 
 for sh in unit_shield_types.findall('unit_shield_types'):
     unit_shield_key = sh.find('key').text
@@ -193,8 +224,9 @@ for mnt in mounts.findall('mounts'):
 
 for eng in engines.findall('battlefield_engines'):
     engine_key = eng.find('key').text
+    engine_missile_weapon = eng.find('missile_weapon').text
     engine_battle_entity = eng.find('battle_entity').text
-    engines_list.append({'engine_key':engine_key, 'engine_battle_entity':engine_battle_entity})
+    engines_list.append({'engine_key':engine_key, 'engine_battle_entity':engine_battle_entity, 'engine_missile_weapon':engine_missile_weapon})
 
 for i in main_units_list:
     for x in land_units_list:
@@ -225,10 +257,44 @@ for i in all_stats:
           i.update(m)
 
 
+
+for i in engines_list:
+    z = {}
+    for x in missile_weapons_list:
+        if i['engine_missile_weapon'] != None:
+            if x['missile_weapon'] == i['engine_missile_weapon']:
+                z.update(i)
+                z.update(x)
+                artilery_list.append(z)
+
+
+for i in artilery_list:
+    for x in projectiles_list:
+        if i['default_projectile'] == x['projectiles_key']:
+            i.update(x)
+
+for i in artilery_list:
+    for x in projectiles_explosions_list:
+        if i['explosion_type'] == x['projectiles_explosions_key']:
+            i.update(x)
+
+for i in artilery_list:
+    for x in land_units_list:
+        if i['engine_key'] == x['engine']:
+            i.update(x)
+
+
+
 for i in all_stats:
     for x in projectiles_explosions_list:
         if 'explosion_type' in i:
             if i['explosion_type'] == x['projectiles_explosions_key']:
+                i.update(x)
+
+for i in all_stats:
+    for x in artilery_list:
+        if 'unit_name' in x:
+            if i['unit_name'] == x['unit_name']:
                 i.update(x)
 
 
@@ -315,3 +381,75 @@ for i in all_stats:
         i['missile_damage'] = ceil((i['missile_base_damage'] + i['missile_ap_damage'] + i['explosion_base_damage'] + i['explosion_ap_damage']) * float(i['shots_per_volley']) * float(i['projectile_number']) * 10 / i['real_reload_time'])
 
 
+for i in all_stats:
+    if i['contact_phase'] == None:
+        i['contact_phase'] = 'none'
+
+
+for i in all_stats:
+    if 'contact_stat_effect' in i:
+        if i['contact_stat_effect'] == None:
+            i['contact_stat_effect'] = 'none'
+
+
+for i in all_stats:
+    if 'explosion_contact_phase_effect' in i:
+        if i['explosion_contact_phase_effect'] == None:
+            i['explosion_contact_phase_effect'] = 'none'
+
+
+for i in all_stats:
+    for x in battle_entities_list:
+        if 'engine_battle_entity' in i:
+            if i['engine_battle_entity'] == x['battle_entities_key']:
+                i['run_speed'] = x['run_speed']
+                i['fly_speed'] = x['fly_speed']
+                i['battle_entities_hit_points'] = x['battle_entities_hit_points']
+
+
+
+for i in all_stats:
+    for x in battle_entities_list:
+        if 'mount_entity' in i:
+            if i['mount_entity'] == x['battle_entities_key']:
+                i['run_speed'] = x['run_speed']
+                i['fly_speed'] = x['fly_speed']
+                i['battle_entities_hit_points'] = x['battle_entities_hit_points']
+
+
+for i in all_stats:
+    if i['num_engines'] == 0 and i['num_mounts'] == 0:
+        i['health_per_entity'] = i['hp'] // i['num_men']
+    elif i['num_engines'] > 0:
+        i['health_per_entity'] = i['hp'] // i['num_engines']
+    elif i['num_mounts'] > 0 and i['num_engines'] == 0:
+        i['health_per_entity'] = i['hp'] // i['num_mounts']
+
+for i in all_stats:
+    for x in unit_variants_list:
+        if i['key'] == x['unit_variants_key']:
+            i.update(x)
+
+
+for i in units_custom_battle_permissions_list:
+            portrait_key = i['units_custom_battle_permissions_unit_key']
+            portrait = i['units_custom_battle_permissions_lord_portrait']
+            p_list = []
+            if portrait != None:
+                for i in portrait:
+                    p_list.append(i)
+                if '/' in p_list:
+                    p_list= p_list[p_list.index('/')+1:-1]
+                    if '/' in p_list:
+                        p_list = p_list[p_list.index('/') + 1:-1]
+                        if '/' in p_list:
+                            p_list = p_list[p_list.index('/') + 1:-1]
+                            if '/' in p_list:
+                                p_list = p_list[p_list.index('/') + 1:-1]
+                portrait = ''.join(p_list)
+                lord_portraits_list.append({'portrait_key':portrait_key, 'unit_card':portrait})
+
+for i in all_stats:
+    for x in lord_portraits_list:
+        if i['key'] == x['portrait_key']:
+            i['unit_card'] = x['unit_card']

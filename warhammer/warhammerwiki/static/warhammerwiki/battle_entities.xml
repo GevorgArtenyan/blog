@@ -26096,8 +26096,6 @@
 <max_tracking_ratio>1.600000023841858</max_tracking_ratio>
 <min_tracking_ratio>0.5</min_tracking_ratio>
 <min_turning_speed>0</min_turning_speed>
-<porthole_camera></porthole_camera>
-<porthole_composite_scene></porthole_composite_scene>
 <projectile_intersection_radius_ratio>1</projectile_intersection_radius_ratio>
 <projectile_penetration_resistance>1</projectile_penetration_resistance>
 <projectile_penetration_speed_change>0.8999999761581421</projectile_penetration_speed_change>
@@ -26118,7 +26116,6 @@
 <allow_static_turn_anim>1</allow_static_turn_anim>
 <allow_turn_to_move_anim>1</allow_turn_to_move_anim>
 <audio_entity_type>wh_human_male</audio_entity_type>
-<aura_vfx></aura_vfx>
 <can_cast_projectile>0</can_cast_projectile>
 <can_climb_ladder_and_stair_pipes>1</can_climb_ladder_and_stair_pipes>
 <can_dismember>1</can_dismember>
@@ -26147,8 +26144,6 @@
 <max_tracking_ratio>1.600000023841858</max_tracking_ratio>
 <min_tracking_ratio>0.5</min_tracking_ratio>
 <min_turning_speed>0</min_turning_speed>
-<porthole_camera></porthole_camera>
-<porthole_composite_scene></porthole_composite_scene>
 <projectile_intersection_radius_ratio>1</projectile_intersection_radius_ratio>
 <projectile_penetration_resistance>1</projectile_penetration_resistance>
 <projectile_penetration_speed_change>0.8999999761581421</projectile_penetration_speed_change>
@@ -26169,7 +26164,6 @@
 <allow_static_turn_anim>1</allow_static_turn_anim>
 <allow_turn_to_move_anim>1</allow_turn_to_move_anim>
 <audio_entity_type>wh_human_male</audio_entity_type>
-<aura_vfx></aura_vfx>
 <can_cast_projectile>0</can_cast_projectile>
 <can_climb_ladder_and_stair_pipes>1</can_climb_ladder_and_stair_pipes>
 <can_dismember>0</can_dismember>

@@ -61,7 +61,7 @@ btn.addEventListener("click", function(){
                 document.getElementById("unit_upkeep").innerHTML=data[i].upkeep;
                 document.getElementById("unit_mp_cost").innerHTML=data[i].mp_cost;
                 document.getElementById("unit_health").innerHTML=data[i].health;
-                document.getElementById("unit_health_per_entity").innerHTML=data[i].upkeep;
+                document.getElementById("unit_health_per_entity").innerHTML=data[i].health_per_entity;
                 if (data[i].bronze_shield) {
                     document.getElementById('bronze_shield').style.display = 'block';
                 }
@@ -243,7 +243,7 @@ function renderHTML2(data) {
             document.getElementById("unit_upkeep2").innerHTML=data[i].upkeep;
             document.getElementById("unit_mp_cost2").innerHTML=data[i].mp_cost;
             document.getElementById("unit_health2").innerHTML=data[i].health;
-            document.getElementById("unit_health_per_entity2").innerHTML=data[i].upkeep;
+            document.getElementById("unit_health_per_entity2").innerHTML=data[i].health_per_entity;
             if (data[i].bronze_shield) {
                 document.getElementById('bronze_shield2').style.display = 'block';
             }
