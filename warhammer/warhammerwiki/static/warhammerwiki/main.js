@@ -56,6 +56,8 @@ btn.addEventListener("click", function(){
             var unit_stats = document.getElementById("unit_stats");
                 var image = "<img src="+ data[i].unit_image + ">"
                 document.getElementById("image-section").innerHTML=image;
+                $('#vzgo').html("");
+                $('#vzgo').prepend('<img id="ap_damage" src="' +  data[i].unit_image + '" />');
                 document.getElementById("unit_name").innerHTML=data[i].unit_name;
                 document.getElementById("unit_cost").innerHTML=data[i].cost;
                 document.getElementById("unit_upkeep").innerHTML=data[i].upkeep;
@@ -530,6 +532,8 @@ var u_armour2 = parseInt($('#unit_armour2').text());
 
 
 }
+
+
 
 
 
