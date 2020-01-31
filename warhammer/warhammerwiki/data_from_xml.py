@@ -15,6 +15,7 @@ file_name10 = 'mounts.xml'
 file_name11 = 'battlefield_engines.xml'
 file_name12 = 'unit_variants.xml'
 file_name13 = 'units_custom_battle_permissions.xml'
+file_name14 = 'unit_description_short_texts.xml'
 
 full_file = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name))
 full_file2 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name2))
@@ -29,6 +30,7 @@ full_file10 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki',
 full_file11 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name11))
 full_file12 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name12))
 full_file13 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name13))
+full_file14 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name14))
 
 
 dom_land_units = ElementTree.parse(full_file)
@@ -44,6 +46,7 @@ dom_mounts = ElementTree.parse(full_file10)
 dom_engines = ElementTree.parse(full_file11)
 dom_unit_variants = ElementTree.parse(full_file12)
 dom_units_custom_battle_permissions = ElementTree.parse(full_file13)
+dom_unit_description = ElementTree.parse(full_file14)
 
 land_units = dom_land_units.getroot()
 main_units = dom_main_units.getroot()
@@ -58,6 +61,7 @@ mounts = dom_mounts.getroot()
 engines = dom_engines.getroot()
 unit_variants = dom_unit_variants.getroot()
 units_custom_battle_permissions = dom_units_custom_battle_permissions.getroot()
+unit_description = dom_unit_description.getroot()
 
 main_units_list = []
 land_units_list = []
@@ -75,18 +79,20 @@ lord_portraits_list = []
 engines_list = []
 unit_variants_list = []
 artilery_list = []
+unit_description_list = []
 
 all_stats = []
 
 
 for mu in main_units.findall('main_units'):
     land_unit = mu.find('land_unit').text
+    unit = mu.find('unit').text
     num_men = int(mu.find('num_men').text)
     recruitment_cost = mu.find('recruitment_cost').text
     upkeep = mu.find('upkeep_cost').text
     multiplayer_cost = mu.find('multiplayer_cost').text
     weight = mu.find('weight').text
-    main_units_list.append({'land_unit':land_unit, 'recruitment_cost':recruitment_cost, 'upkeep':upkeep, 'multiplayer_cost':multiplayer_cost, 'weight':weight, 'num_men':num_men})
+    main_units_list.append({'land_unit':land_unit, 'recruitment_cost':recruitment_cost, 'upkeep':upkeep, 'multiplayer_cost':multiplayer_cost, 'weight':weight, 'num_men':num_men, 'unit':unit})
 
 
 for lu in land_units.findall('land_units'):
@@ -227,6 +233,13 @@ for eng in engines.findall('battlefield_engines'):
     engine_missile_weapon = eng.find('missile_weapon').text
     engine_battle_entity = eng.find('battle_entity').text
     engines_list.append({'engine_key':engine_key, 'engine_battle_entity':engine_battle_entity, 'engine_missile_weapon':engine_missile_weapon})
+
+
+for ud in unit_description.findall('unit_description_short_texts'):
+    unit_description_key = ud.find('key').text
+    unit_description_text = ud.find('text').text
+    unit_description_list.append({'unit_description_key':unit_description_key, 'unit_description_text':unit_description_text})
+
 
 for i in main_units_list:
     for x in land_units_list:

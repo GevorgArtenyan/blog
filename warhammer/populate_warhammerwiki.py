@@ -6,10 +6,12 @@ import django
 django.setup()
 from warhammerwiki.models import Race, Unit
 from warhammerwiki.data_from_xml import all_stats
+from warhammerwiki.data_from_xml import all_stats
 from math import *
 
 stat_template = {'unit_name': '',
         'unit_image': '',
+         'unit_desciption':'',
         'key':'',
         'cost':0,
         'upkeep':0,

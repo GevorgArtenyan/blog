@@ -28,6 +28,7 @@ class Unit(models.Model):
     weight = models.CharField(max_length=150)
     unit_name = models.CharField(max_length=200)
     unit_image = models.ImageField(upload_to='unit-cards')
+    unit_desciption = models.TextField(null=True, blank=True)
     cost = models.IntegerField()
     upkeep = models.IntegerField()
     mp_cost = models.IntegerField()

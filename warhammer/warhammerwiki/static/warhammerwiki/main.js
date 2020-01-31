@@ -54,7 +54,7 @@ btn.addEventListener("click", function(){
             if (displayunit == data[i].unit_name) {
                 htmlString += "<p>Name: "  + data[i].cost + "</p>" ;
             var unit_stats = document.getElementById("unit_stats");
-                var image = "<img src=\"/static/warhammerwiki/images/Unit-Cards/"+ data[i].slug +".png\">"
+                var image = "<img src="+ data[i].unit_image + ">"
                 document.getElementById("image-section").innerHTML=image;
                 document.getElementById("unit_name").innerHTML=data[i].unit_name;
                 document.getElementById("unit_cost").innerHTML=data[i].cost;
@@ -236,7 +236,7 @@ function renderHTML2(data) {
         if (displayunit2 == data[i].unit_name) {
             htmlString2 += "<p>Name: "  + data[i].cost + "</p>" ;
         var unit_stats2 = document.getElementById("unit_stats2");
-            var image2 = "<img src=\"/static/warhammerwiki/images/Unit-Cards/"+ data[i].slug +".png\">"
+            var image2 = "<img src="+ data[i].unit_image + ">"
             document.getElementById("image-section2").innerHTML=image2;
             document.getElementById("unit_name2").innerHTML=data[i].unit_name;
             document.getElementById("unit_cost2").innerHTML=data[i].cost;
