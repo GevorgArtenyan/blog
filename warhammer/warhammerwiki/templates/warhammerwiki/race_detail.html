@@ -1,5 +1,6 @@
 {% extends "warhammerwiki/base.html" %}
 {% block content %}
+{% load staticfiles %}
         {{ object.race_name }}
         <div class="unit-column">
             <div class="unit-row">
@@ -8,7 +9,7 @@
                 {% if unit.category == "lord" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>
@@ -21,7 +22,7 @@
                 {% if unit.category == "hero" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>
@@ -34,7 +35,7 @@
                 {% if unit.category == "melee_infantry" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>                {% endif %}
@@ -46,7 +47,7 @@
                 {% if unit.category == "missile_infantry" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>                {% endif %}
@@ -58,7 +59,7 @@
                 {% if unit.category == "monstrous_infantry" or unit.category == "monster" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>                {% endif %}
@@ -70,7 +71,7 @@
                 {% if unit.category == "warmachine" or unit.category == "chariot" %}
                         <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
                             <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
-                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{% static 'warhammerwiki/images/other_images/unit_card_frame_plain.png' %}" class="unit-card-frame"/>
                                 <img src="{{ unit.unit_image.url }}" class="unit-card"/>
                             </a>
                         </div>                {% endif %}
