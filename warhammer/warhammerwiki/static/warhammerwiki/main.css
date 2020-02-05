@@ -150,7 +150,6 @@ ul {
 
 
 .hide_image {
-    display: none;
     margin: -3px;
     margin-left: -1px;
     padding-right: 4px
@@ -251,4 +250,39 @@ section {
     display: flex;
     flex-direction: row;
 }
+
+
+.unit-row{
+    text-align: center;
+}
+
+.unit-card {
+    display:inline-block;
+    margin-bottom: 0px;
+    height: 150px;
+    margin-bottom: 5px;
+    margin-right: -5px;
+    margin-left: 0px;
+
+}
+
+
+
+
+.unit-card-frame {
+  position: absolute;
+}
+
+
+.unit-card {
+    width: 60px;
+    height: 90%
+}
+
+.unit-card {
+    display:inline-block;
+    height: 130px;
+
+}
+
 

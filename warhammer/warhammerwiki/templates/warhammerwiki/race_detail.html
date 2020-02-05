@@ -1,7 +1,80 @@
 {% extends "warhammerwiki/base.html" %}
 {% block content %}
         {{ object.race_name }}
-        {% for unit in units %}
-            <h1><a href="{% url 'unit-detail' race.slug unit.slug %}">{{ unit.unit_name }}</a></h1>
-        {% endfor %}
+        <div class="unit-column">
+            <div class="unit-row">
+                <h2>Lords</h2>
+            {% for unit in units %}
+                {% if unit.category == "lord" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="unit-row">
+            <h2>Heroes</h2>
+            {% for unit in units %}
+                {% if unit.category == "hero" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="unit-row">
+            <h2>Melee Infantry</h2>
+            {% for unit in units %}
+                {% if unit.category == "melee_infantry" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="unit-row">
+            <h2>Missile Infantry</h2>
+            {% for unit in units %}
+                {% if unit.category == "missile_infantry" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="unit-row">
+            <h2>Beasts and Monsters</h2>
+            {% for unit in units %}
+                {% if unit.category == "monstrous_infantry" or unit.category == "monster" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>                {% endif %}
+            {% endfor %}
+            </div>
+            <div class="unit-row">
+            <h2>Warmachines and Artilery</h2>
+            {% for unit in units %}
+                {% if unit.category == "warmachine" or unit.category == "chariot" %}
+                        <div class="unit-card" data-tooltip title="{{ unit.unit_name }}">
+                            <a href="{% url 'unit-detail' race.slug unit.slug %}" class="unit-image">
+                                <img src="https://res.cloudinary.com/fishofstone/image/upload/q_auto/twwstats/api/5566353893085820817/ui/skins/default/unit_card_frame_plain.png" class="unit-card-frame"/>
+                                <img src="{{ unit.unit_image.url }}" class="unit-card"/>
+                            </a>
+                        </div>                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
 {% endblock %}

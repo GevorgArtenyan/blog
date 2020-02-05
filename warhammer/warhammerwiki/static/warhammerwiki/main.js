@@ -5,10 +5,6 @@ $( document ).ready(function() {
 });
 
 
-
-
-
-
 var btn = document.getElementById('btn')
 var container = document.getElementById('ourcontainer')
 var url = 'http://127.0.0.1:8000/api/'
@@ -35,7 +31,6 @@ btn.addEventListener("click", function(){
            $('#all_stats').hide()
         } else {
            $('#all_stats').show()
-
         }
         if ($('#unit_name2').text() == 'name'){
            $('#all_stats2').hide()
@@ -55,9 +50,8 @@ btn.addEventListener("click", function(){
                 htmlString += "<p>Name: "  + data[i].cost + "</p>" ;
             var unit_stats = document.getElementById("unit_stats");
                 var image = "<img src="+ data[i].unit_image + ">"
+                $('.hide_image').hide()
                 document.getElementById("image-section").innerHTML=image;
-                $('#vzgo').html("");
-                $('#vzgo').prepend('<img id="ap_damage" src="' +  data[i].unit_image + '" />');
                 document.getElementById("unit_name").innerHTML=data[i].unit_name;
                 document.getElementById("unit_cost").innerHTML=data[i].cost;
                 document.getElementById("unit_upkeep").innerHTML=data[i].upkeep;
@@ -106,6 +100,12 @@ btn.addEventListener("click", function(){
                 if (data[i].contaminated) {
                     document.getElementById('contaminated').style.display = 'block';
                 }
+                if (data[i].madness_of_khaine) {
+                    document.getElementById('madness_of_khaine').style.display = 'block';
+                }
+                if (data[i].melee_burnt) {
+                    document.getElementById('melee_burnt').style.display = 'block';
+                }
                 document.getElementById("unit_melee_attack").innerHTML=data[i].melee_attack;
                 document.getElementById("unit_attack_interval").innerHTML=data[i].attack_interval;
                 document.getElementById("unit_melee_defence").innerHTML=data[i].melee_defence;
@@ -113,10 +113,10 @@ btn.addEventListener("click", function(){
                     document.getElementById('ap_damage').style.display = 'block';
                 }
                 if (data[i].melee_bonus_large_yes_no) {
-                    document.getElementById('bonus_vs_inf').style.display = 'block';
+                    document.getElementById('bonus_vs_large').style.display = 'block';
                 }
                 if (data[i].melee_bonus_inf_yes_no) {
-                    document.getElementById('bonus_vs_large').style.display = 'block';
+                    document.getElementById('bonus_vs_inf').style.display = 'block';
                 }
                 document.getElementById("unit_weapon_strength").innerHTML=data[i].weapon_strenght;
                 document.getElementById("unit_base_damage").innerHTML=data[i].base_damage;
@@ -168,8 +168,20 @@ btn.addEventListener("click", function(){
                 if (data[i].shieldbreaker) {
                     document.getElementById('shieldbreaker').style.display = 'block';
                     }
-                if (data[i].burnt) {
-                    document.getElementById('burnt').style.display = 'block';
+                if (data[i].missile_burnt) {
+                    document.getElementById('missile_burnt').style.display = 'block';
+                    }
+                if (data[i].take_cover) {
+                    document.getElementById('take_cover').style.display = 'block';
+                    }
+                if (data[i].missile_discouraged) {
+                    document.getElementById('missile_discouraged').style.display = 'block';
+                    }
+                if (data[i].poisoned_wind) {
+                    document.getElementById('poisoned_wind').style.display = 'block';
+                    }
+                if (data[i].missile_contaminated) {
+                    document.getElementById('missile_contaminated').style.display = 'block';
                     }
                 document.getElementById("unit_missile_damage").innerHTML=data[i].missile_damage;
                 document.getElementById("unit_missile_base_damage").innerHTML=data[i].missile_base_damage;
@@ -288,6 +300,12 @@ function renderHTML2(data) {
             if (data[i].contaminated) {
                 document.getElementById('contaminated2').style.display = 'block';
             }
+            if (data[i].madness_of_khaine) {
+                document.getElementById('madness_of_khaine2').style.display = 'block';
+            }
+            if (data[i].melee_burnt) {
+                document.getElementById('melee_burnt2').style.display = 'block';
+            }
             document.getElementById("unit_melee_attack2").innerHTML=data[i].melee_attack;
             document.getElementById("unit_attack_interval2").innerHTML=data[i].attack_interval;
             document.getElementById("unit_melee_defence2").innerHTML=data[i].melee_defence;
@@ -350,8 +368,20 @@ function renderHTML2(data) {
             if (data[i].shieldbreaker) {
                 document.getElementById('shieldbreaker2').style.display = 'block';
                 }
-            if (data[i].burnt) {
-                document.getElementById('burnt2').style.display = 'block';
+            if (data[i].missile_burnt) {
+                document.getElementById('missile_burnt2').style.display = 'block';
+                }
+            if (data[i].take_cover) {
+                document.getElementById('take_cover2').style.display = 'block';
+                }
+            if (data[i].missile_discouraged) {
+                document.getElementById('missile_discouraged2').style.display = 'block';
+                }
+            if (data[i].poisoned_wind) {
+                document.getElementById('poisoned_wind2').style.display = 'block';
+                }
+            if (data[i].missile_contaminated) {
+                document.getElementById('missile_contaminated2').style.display = 'block';
                 }
             document.getElementById("unit_missile_damage2").innerHTML=data[i].missile_damage;
             document.getElementById("unit_missile_base_damage2").innerHTML=data[i].missile_base_damage;

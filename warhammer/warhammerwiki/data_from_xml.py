@@ -32,7 +32,6 @@ full_file12 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki',
 full_file13 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name13))
 full_file14 = os.path.abspath(os.path.join('warhammerwiki\static\warhammerwiki', file_name14))
 
-
 dom_land_units = ElementTree.parse(full_file)
 dom_main_units = ElementTree.parse(full_file2)
 dom_melee_weapon = ElementTree.parse(full_file3)
@@ -87,12 +86,14 @@ all_stats = []
 for mu in main_units.findall('main_units'):
     land_unit = mu.find('land_unit').text
     unit = mu.find('unit').text
+    category = mu.find('caste').text
+    is_naval = int(mu.find('is_naval').text)
     num_men = int(mu.find('num_men').text)
     recruitment_cost = mu.find('recruitment_cost').text
     upkeep = mu.find('upkeep_cost').text
     multiplayer_cost = mu.find('multiplayer_cost').text
     weight = mu.find('weight').text
-    main_units_list.append({'land_unit':land_unit, 'recruitment_cost':recruitment_cost, 'upkeep':upkeep, 'multiplayer_cost':multiplayer_cost, 'weight':weight, 'num_men':num_men, 'unit':unit})
+    main_units_list.append({'land_unit':land_unit, 'recruitment_cost':recruitment_cost, 'upkeep':upkeep, 'multiplayer_cost':multiplayer_cost, 'weight':weight, 'num_men':num_men, 'unit':unit, 'category':category, 'is_naval':is_naval})
 
 
 for lu in land_units.findall('land_units'):
@@ -466,3 +467,71 @@ for i in all_stats:
     for x in lord_portraits_list:
         if i['key'] == x['portrait_key']:
             i['unit_card'] = x['unit_card']
+
+
+tiktaqto = ''
+
+for i in all_stats:
+    if i['unit_name'] == "Tiktaq'to":
+        tiktaqto = i
+
+
+dublicate_list = []
+all_stats_copy = all_stats.copy()
+chosen_list = []
+name_list = []
+key_list = []
+
+for i in all_stats_copy:
+    if i['is_naval'] == 1:
+        all_stats.remove(i)
+    elif '_summoned' in i['key']:
+        all_stats.remove(i)
+    elif '_boss' in i['key']:
+        all_stats.remove(i)
+    elif '_ksl' in i['key']:
+        all_stats.remove(i)
+    elif '_teb' in i['key']:
+        all_stats.remove(i)
+    elif '_qb' in i['key']:
+        all_stats.remove(i)
+
+for i in all_stats:
+    for x in all_stats:
+        if i['unit_name'] == x['unit_name'] and i['key'] != x['key']:
+            dublicate_list.append({'key':x['key'], 'name':x['unit_name']})
+
+
+for i in dublicate_list:
+    if '_0' in i['key']:
+        chosen_list.append(i)
+
+for i in chosen_list:
+    if i['name'] not in name_list:
+        name_list.append(i['name'])
+        key_list.append(i['key'])
+
+dublicate_list_copy = dublicate_list.copy()
+
+for i in dublicate_list_copy:
+    for x in key_list:
+        if i['key'] == x:
+            dublicate_list.remove(i)
+
+
+for i in all_stats_copy:
+    for x in dublicate_list:
+        if i['key'] == x['key']:
+            if i in all_stats:
+                all_stats.remove(i)
+
+
+for i in all_stats_copy:
+    if i['unit_name'] == "Tiktaq'to":
+        all_stats.remove(i)
+        all_stats.append(tiktaqto)
+
+
+for i in all_stats:
+    if 'lzd' in i['key']:
+        print(i)
