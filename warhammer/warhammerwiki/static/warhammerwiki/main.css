@@ -152,10 +152,16 @@ ul {
 .hide_image {
     margin: -3px;
     margin-left: -1px;
-    padding-right: 4px
-
+    padding-right: 4px;
+    display: none;
 }
 
+.hide_image2 {
+    margin: -3px;
+    margin-left: -1px;
+    padding-right: 4px;
+    display: none;
+}
 
 
 .attributes {
@@ -256,18 +262,24 @@ section {
     text-align: center;
 }
 
+.unit-row{
+    text-align: center;
+}
+
 .unit-card {
     display:inline-block;
     margin-bottom: 0px;
     height: 150px;
     margin-bottom: 5px;
     margin-right: -5px;
-    margin-left: 0px;
-
+    margin-left: -0.3px;
 }
 
-
-
+.unit-card-hover {
+  position: absolute;
+  display: none;
+  margin-left: 2.3px;
+}
 
 .unit-card-frame {
   position: absolute;
@@ -285,4 +297,7 @@ section {
 
 }
 
+.unit-image:hover .unit-card-hover {
+  display:block;
+}
 

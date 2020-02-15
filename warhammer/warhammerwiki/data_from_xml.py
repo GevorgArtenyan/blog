@@ -218,7 +218,7 @@ for per in units_custom_battle_permissions.findall('units_custom_battle_permissi
 
 for sh in unit_shield_types.findall('unit_shield_types'):
     unit_shield_key = sh.find('key').text
-    missile_block_chance = sh.find('missile_block_chance').text
+    missile_block_chance = int(sh.find('missile_block_chance').text)
     unit_shield_types_list.append({'unit_shield_key':unit_shield_key, 'missile_block_chance':missile_block_chance})
 
 
